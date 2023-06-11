@@ -180,9 +180,9 @@ public class BookTicketsController implements ActionListener {
 		ticketText += "Theater Type: " + this.TheaterType + "\n";
 		ticketText += "Selected Date: " + this.SelectedDate + "\n";
 		ticketText += "Selected Time: " + this.SelectedTime + "\n";
-		ticketText += "Adult: " + this.SelectedDate + "\n";
-		ticketText += "Selected Date: " + this.SelectedDate + "\n";
-		ticketText += "Selected Date: " + this.SelectedDate + "\n";
+		ticketText += "Adult: " + this.NumberOfAdult + "\n";
+		ticketText += "Senior: " + this.NumberOfSenior + "\n";
+		ticketText += "Child: " + this.NumberOfChild + "\n";
 		ticketText += "Discounted Price: " +  Integer.toString(DiscountedPrice) + "\n";
 		ticketText += "Total Price: " + Integer.toString(TotalPrice) + "\n";
 		ticketText += "Reservation Number: "; 
@@ -204,8 +204,15 @@ public class BookTicketsController implements ActionListener {
 	
 	public boolean isNumber(String input) {//determine whether input data is in number format
 		input = input.trim();
-		for(int i = 0; i < input.length(); i++) {
-			if(!Character.isDigit(input.charAt(i))) return false;
+		if(input.charAt(0) != '-') {
+			for(int i = 0; i < input.length(); i++) {
+				if(!Character.isDigit(input.charAt(i))) return false;
+			}
+		}
+		else {
+			for(int i = 1; i < input.length(); i++) {
+				if(!Character.isDigit(input.charAt(i))) return false;
+			}
 		}
 		return true;
 	}
