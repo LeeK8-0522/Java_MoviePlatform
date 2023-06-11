@@ -1,10 +1,10 @@
 package Main;
 
 public class MovieModel {
-	private String movieName;
-	private float averageScore;
-	private float sumOfScores;
-	private int numberOfRatings;
+	private String movieName;//store name of the movie
+	private float averageScore;//store average score of the movie
+	private float sumOfScores;//store sum of rated score about the movie
+	private int numberOfRatings;//score number of ratings about the movie
 	
 	public MovieModel(String movieName, float averageScore, float sumOfScores, int numberOfRatings) {
 		this.movieName = movieName;

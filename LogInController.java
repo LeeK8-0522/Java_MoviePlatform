@@ -9,15 +9,15 @@ import javax.swing.JOptionPane;
 public class LogInController implements ActionListener{
 	private List<AccountModel> users;
 	private LogInView logInView;
-	private String enteredID = "";
-	private String enteredPassword = "";
+	private String enteredID = "";//store entered ID data
+	private String enteredPassword = "";//store entered password data
 	private int loggedInIndex = -1;//represents logged in user's account by pointing index of list
 	
 	public LogInController(List<AccountModel> users, LogInView logInView) {
 		this.users = users;
 		this.logInView = logInView;
-		logInView.setListener(this);
-	}
+		logInView.setListener(this);//add action listener to buttons
+	}//initialize fields in constructor
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -25,14 +25,14 @@ public class LogInController implements ActionListener{
 			enteredID = logInView.getEnteredID();
 			enteredPassword = logInView.getEnteredPassword();
 			loggedInIndex = checkAccount(enteredID, enteredPassword);
-			if(loggedInIndex >= 0) {
-				logInView.dispose();
+			if(loggedInIndex >= 0) {//if log-in process is successfully done
+				logInView.dispose();//dispose view window
 			}
-			else {
+			else {//if ID or Password is wrong, show pop-up window
 				JOptionPane.showMessageDialog(null, "ID or Password is wrong", "Error Message", JOptionPane.ERROR_MESSAGE);//show the problem message in pop-up window
 			}
 		}
-		else if(e.getSource() == logInView.getCancelButton()) {
+		else if(e.getSource() == logInView.getCancelButton()) {//if user clicked 'cancel' button, dispose window
 			logInView.dispose();
 		}
 	}
@@ -44,7 +44,7 @@ public class LogInController implements ActionListener{
 			}
 		}
 		return -1;
-	}
+	}//check entered ID & Password
 	
 	public int getLoggedInIndex() {
 		return this.loggedInIndex;

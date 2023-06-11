@@ -20,10 +20,12 @@ import javax.swing.DefaultComboBoxModel;
 
 public class RateMoviesView extends JFrame {
 
+	/* Below are fields */
 	private JPanel contentPane;
 	private JComboBox ScoreField_comboBox;
 	private JComboBox MovieField_comboBox;
 	private JButton SubmitRating_button;
+	/* Finish implementing fields */
 
 	/**
 	 * Create the frame.
@@ -117,10 +119,10 @@ public class RateMoviesView extends JFrame {
 		return this.SubmitRating_button;
 	}
 	public String getSelectedMovie() {
-		return (String)this.MovieField_comboBox.getSelectedItem();
+		return (String)this.MovieField_comboBox.getSelectedItem();//get selected item in string format
 	}
 	public String getSelectedScore() {
-		return (String)this.ScoreField_comboBox.getSelectedItem();
+		return (String)this.ScoreField_comboBox.getSelectedItem();//get selected item in string format
 	}
 	/* Finish implementing getter-methods */
 }

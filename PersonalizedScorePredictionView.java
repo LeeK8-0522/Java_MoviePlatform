@@ -25,14 +25,16 @@ import javax.swing.DefaultComboBoxModel;
 
 public class PersonalizedScorePredictionView extends JFrame {
 
+	/* Below are fields */
 	private JPanel contentPane;
 	private JComboBox SelectMovie_comboBox;
 	private JButton GetPrediction_button;
+	/* Finish implementing fields */
 
 	/**
 	 * Create the frame.
 	 */
-	public PersonalizedScorePredictionView() {
+	public PersonalizedScorePredictionView() {//implementing constructor
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Desktop\\final_project\\final_project\\eeCinema.png"));
 		setTitle("EEC Score Prediction");

@@ -43,7 +43,6 @@ import java.awt.Toolkit;
 public class EECinemaView extends JFrame {
 
 	/* Below are fields */
-	//private JFrame EECinema_frame;
 	private JButton LogIn_button;
 	private JLabel HelloName_label;
 	private JLabel Movie1Score_label;
@@ -62,12 +61,10 @@ public class EECinemaView extends JFrame {
 	/* Finish implementing fields */
 	
 
-	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	public EECinemaView() {
-		//EECinema_frame = new JFrame();
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Desktop\\final_project\\final_project\\eeCinema.png"));
 		setTitle("EECinema");
 		setBounds(100, 100, 561, 608);
@@ -704,7 +701,7 @@ public class EECinemaView extends JFrame {
 		this.setTicketsNumberLabel("");
 		this.setCouponLeftLabel("");
 		this.setPointsLeftLabel("");
-	}
+	}//clear 'hello~! (NAME)'part label
 	
 	public void updateState(AccountModel accountModel) {
 		this.getLogInButton().setText("Log Out");
@@ -712,7 +709,7 @@ public class EECinemaView extends JFrame {
 		this.setTicketsNumberLabel(Integer.toString(accountModel.getNumberOfTickets()));
 		this.setCouponLeftLabel(Integer.toString(accountModel.getNumberOfCoupons()));
 		this.setPointsLeftLabel(Integer.toString(accountModel.getAmountOfPoints()));
-	}
+	}//update 'hello~! (NAME)"part label
 	
 	public void updateMovieScoreState(List<MovieModel> movies) {
 		this.setMovie1Score(Float.toString(movies.get(0).getAverageScore()));
@@ -720,5 +717,5 @@ public class EECinemaView extends JFrame {
 		this.setMovie3Score(Float.toString(movies.get(2).getAverageScore()));
 		this.setMovie4Score(Float.toString(movies.get(3).getAverageScore()));
 		this.setMovie5Score(Float.toString(movies.get(4).getAverageScore()));
-	}
+	}//update movie average score information screen
 }

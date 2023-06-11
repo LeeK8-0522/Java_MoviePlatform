@@ -21,13 +21,14 @@ import java.awt.event.ActionListener;
 
 public class TheaterInformationView extends JFrame {
 
+	/* Below are fields */
 	private JPanel contentPane;
 	private JButton Pet_button;
 	private JButton DolbyIMAX_button;
 	private JButton Extreme4D_button;
 	private JButton Original_button;
 	private JTextArea TheaterTypeExplanation_textArea;
-
+	/* Finish implementing fields */
 
 	/**
 	 * Create the frame.

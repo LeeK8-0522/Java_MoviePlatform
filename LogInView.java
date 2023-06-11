@@ -23,16 +23,17 @@ import java.awt.Toolkit;
 
 public class LogInView extends JDialog {
 
+	/* Below are fields */
 	private final JPanel contentPanel = new JPanel();
 	private JTextField ID_textField;
 	private JTextField Password_textField;
 	private JButton okButton;
 	private JButton cancelButton;
-
+	/* Finish implementing fields */
 	/**
 	 * Create the dialog.
 	 */
-	public LogInView() {
+	public LogInView() {//implementing constructor
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Desktop\\final_project\\final_project\\eeCinema.png"));
 		setTitle("EECinema Log In");

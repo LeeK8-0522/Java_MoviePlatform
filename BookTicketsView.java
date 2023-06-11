@@ -26,6 +26,7 @@ import java.awt.CardLayout;
 
 public class BookTicketsView extends JFrame {
 
+	/* Below are fields */
 	private JPanel contentPane;
 	private JTextField Adult_textField;
 	private JTextField Senior_textField;
@@ -37,6 +38,7 @@ public class BookTicketsView extends JFrame {
 	private JComboBox TimeSelection_comboBox;
 	private JButton BookTicket_button;
 	private JTextField PointsApply_textFeild;
+	/* Finish implementing fields */
 
 	/**
 	 * Create the frame.

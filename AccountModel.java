@@ -19,7 +19,7 @@ public class AccountModel {
 		this.amountOfPoints = 0;
 		this.numberOfTickets = 0;
 		for(int i = 0; i < scoreArray.length; i++) {
-			scoreArray[i] = -1;
+			scoreArray[i] = -1;//'-1' means that user didn't rate the movie
 		}
 	}//initialize fields in constructor
 	

@@ -10,6 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class EECinemaController implements ActionListener {
+	/* Below are fields */
 	private List<MovieModel> movies;
 	private List<AccountModel> users;
 	private EECinemaView eecinemaView;
@@ -25,6 +26,7 @@ public class EECinemaController implements ActionListener {
 	private boolean isOpened_PredictScore;//represents state whether Predict-Score window is opened
 	private boolean isLoggedIn;//represent state whether user logged in
 	private int loggedInUserIndex = -1;//represents logged in user's account index
+	/* Finish implementing fields */
 	
 	public EECinemaController(List<MovieModel> movies, List<AccountModel> users, EECinemaView eecinemaView) {
 		this.movies = movies;
@@ -41,50 +43,50 @@ public class EECinemaController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == eecinemaView.getTheaterInformationButton()) {
-			if(isLoggedIn == false) {
+			if(isLoggedIn == false) {//if user didn't log in yet
 				JOptionPane.showMessageDialog(null, "You have to log in first before using services.", "Information Message", JOptionPane.INFORMATION_MESSAGE);//show the problem message in pop-up window
 			}
-			else if(isOpened_TheaterInformation == false) {
+			else if(isOpened_TheaterInformation == false) {//if the window is not opened (for blocking two same windows)
 				isOpened_TheaterInformation = true;
 				theaterInformationThread = new TheaterInformationThread();
 				theaterInformationThread.execute();
 			}
 		}
 		else if(e.getSource() == eecinemaView.getBookTicketsButton()) {
-			if(isLoggedIn == false) {
+			if(isLoggedIn == false) {//if user didn't log in yet
 				JOptionPane.showMessageDialog(null, "You have to log in first before using services.", "Information Message", JOptionPane.INFORMATION_MESSAGE);//show the problem message in pop-up window
 			}
-			else if(isOpened_BookTickets == false) {
+			else if(isOpened_BookTickets == false) {//if the window is not opened (for blocking two same windows)
 				isOpened_BookTickets = true;
 				bookTicketsThread = new BookTicketsThread();
 				bookTicketsThread.execute();
 			}
 		}
 		else if(e.getSource() == eecinemaView.getLogInButton()) {
-			if(isLoggedIn == false) {
+			if(isLoggedIn == false) {//if user didn't log in yet
 				logInThread = new LogInThread();
 				logInThread.execute();
 			}
 			else {
-				isLoggedIn = false;
+				isLoggedIn = false;//change state flag
 				eecinemaView.clearState();
 			}
 		}
 		else if(e.getSource() == eecinemaView.getRateMoviesButton()) {
-			if(isLoggedIn == false) {
+			if(isLoggedIn == false) {//if user didn't log in yet
 				JOptionPane.showMessageDialog(null, "You have to log in first before using services.", "Information Message", JOptionPane.INFORMATION_MESSAGE);//show the problem message in pop-up window
 			}
-			else if(isOpened_RateMovies == false) {
+			else if(isOpened_RateMovies == false) {//if the window is not opened (for blocking two same windows)
 				isOpened_RateMovies = true;
 				rateMoviesThread = new RateMoviesThread();
 				rateMoviesThread.execute();
 			}
 		}
 		else if(e.getSource() == eecinemaView.getPersonalizedScorePredictionButton()) {
-			if(isLoggedIn == false) {
+			if(isLoggedIn == false) {//if user didn't log in yet
 				JOptionPane.showMessageDialog(null, "You have to log in first before using services.", "Information Message", JOptionPane.INFORMATION_MESSAGE);//show the problem message in pop-up window
 			}
-			else if(isOpened_PredictScore == false) {
+			else if(isOpened_PredictScore == false) {//if the window is not opened (for blocking two same windows)
 				isOpened_PredictScore = true;
 				predictScoreThread = new PredictScoreThread();
 				predictScoreThread.execute();
@@ -92,9 +94,10 @@ public class EECinemaController implements ActionListener {
 		}
 	}
 	
-	public class LogInThread extends SwingWorker<Boolean, Float> {
-		private LogInView logInView;
-		private LogInController logInController;
+	/* Below are multi-thread classes extended from swing worker */ 
+	public class LogInThread extends SwingWorker<Boolean, Float> {//multi-thread for log in service 
+		private LogInView logInView;//view field
+		private LogInController logInController;//control field
 		
 		@Override
 		protected Boolean doInBackground() throws Exception {
@@ -103,12 +106,12 @@ public class EECinemaController implements ActionListener {
 			logInView.setVisible(true);
 			logInView.addWindowListener(new WindowAdapter() {
 			    @Override
-			    public void windowClosed(WindowEvent e) {
-			        cancel(true);
+			    public void windowClosed(WindowEvent e) {//when closing window event happens,
+			        cancel(true);//dispose this multi-thread
 			        loggedInUserIndex = logInController.getLoggedInIndex();
-			        if(loggedInUserIndex >= 0) {
-						isLoggedIn = true;
-						eecinemaView.updateState(users.get(loggedInUserIndex));
+			        if(loggedInUserIndex >= 0) {//if log-in process successfully done
+						isLoggedIn = true;//change flag state when closing window
+						eecinemaView.updateState(users.get(loggedInUserIndex));//update screen
 					}
 			    }
 			});
@@ -127,9 +130,9 @@ public class EECinemaController implements ActionListener {
 		}	
 	}
 	
-	public class TheaterInformationThread extends SwingWorker<Boolean, Float> {
-		private TheaterInformationView theaterInformationView;
-		private TheaterInformationController theaterInformationController;
+	public class TheaterInformationThread extends SwingWorker<Boolean, Float> {//multi-thread for theater information service
+		private TheaterInformationView theaterInformationView;//view field
+		private TheaterInformationController theaterInformationController;//control field
 		
 		@Override
 		protected Boolean doInBackground() throws Exception {
@@ -138,9 +141,9 @@ public class EECinemaController implements ActionListener {
 			theaterInformationView.setVisible(true);
 			theaterInformationView.addWindowListener(new WindowAdapter() {
 			    @Override
-			    public void windowClosed(WindowEvent e) {
-			        cancel(true);
-			        isOpened_TheaterInformation = false;
+			    public void windowClosed(WindowEvent e) {//when closing window event happens,
+			        cancel(true);//dispose this multi-thread
+			        isOpened_TheaterInformation = false;//change flag state when closing window
 			    }
 			});
 			return null;
@@ -157,9 +160,9 @@ public class EECinemaController implements ActionListener {
 		}		
 	}
 	
-	public class BookTicketsThread extends SwingWorker<Boolean, Float> {
-		private BookTicketsView bookTicketsView;
-		private BookTicketsController bookTicketsController;
+	public class BookTicketsThread extends SwingWorker<Boolean, Float> {//multi-thread for booking-tickets service
+		private BookTicketsView bookTicketsView;//view field
+		private BookTicketsController bookTicketsController;//control field
 		
 		@Override
 		protected Boolean doInBackground() throws Exception {
@@ -168,10 +171,10 @@ public class EECinemaController implements ActionListener {
 			bookTicketsView.setVisible(true);
 			bookTicketsView.addWindowListener(new WindowAdapter() {
 			    @Override
-			    public void windowClosed(WindowEvent e) {
-			        cancel(true);
-			        isOpened_BookTickets = false;
-			        eecinemaView.updateState(users.get(loggedInUserIndex));
+			    public void windowClosed(WindowEvent e) {//when closing window event happens,
+			        cancel(true);//dispose this multi-thread
+			        isOpened_BookTickets = false;//change flag state when closing window
+			        eecinemaView.updateState(users.get(loggedInUserIndex));//update screen
 			    }
 			});
 			return null;
@@ -189,9 +192,9 @@ public class EECinemaController implements ActionListener {
 		}
 	}
 	
-	public class RateMoviesThread extends SwingWorker<Boolean, Float> {
-		private RateMoviesView rateMoviesView;
-		private RateMoviesController rateMoviesController;
+	public class RateMoviesThread extends SwingWorker<Boolean, Float> {//multi-thread for rating movies service
+		private RateMoviesView rateMoviesView;//view field
+		private RateMoviesController rateMoviesController;//control field
 		
 		@Override
 		protected Boolean doInBackground() throws Exception {
@@ -200,19 +203,19 @@ public class EECinemaController implements ActionListener {
 			rateMoviesView.setVisible(true);
 			rateMoviesView.addWindowListener(new WindowAdapter() {
 			    @Override
-			    public void windowClosed(WindowEvent e) {
-			        cancel(true);
-			        isOpened_RateMovies = false;
-			        eecinemaView.updateMovieScoreState(movies);
+			    public void windowClosed(WindowEvent e) {//when closing window event happens,
+			        cancel(true);//dispose this multi-thread
+			        isOpened_RateMovies = false;//change flag state when closing window
+			        eecinemaView.updateMovieScoreState(movies);//update screen
 			    }
 			});
 			return null;
 		}
 	}
 	
-	public class PredictScoreThread extends SwingWorker<Boolean, Float> {
-		private PersonalizedScorePredictionView personalizedScorePredictionView;
-		private PersonalizedScorePredictionController personalizedScorePredictionController;
+	public class PredictScoreThread extends SwingWorker<Boolean, Float> {// multi-thread for predicting score service 
+		private PersonalizedScorePredictionView personalizedScorePredictionView;//view field
+		private PersonalizedScorePredictionController personalizedScorePredictionController;//control field
 		
 		@Override
 		protected Boolean doInBackground() throws Exception {
@@ -221,12 +224,13 @@ public class EECinemaController implements ActionListener {
 			personalizedScorePredictionView.setVisible(true);
 			personalizedScorePredictionView.addWindowListener(new WindowAdapter() {
 			    @Override
-			    public void windowClosed(WindowEvent e) {
-			        cancel(true);
-			        isOpened_PredictScore = false;
+			    public void windowClosed(WindowEvent e) {//when closing window event happens,
+			        cancel(true);//dispose this multi-thread
+			        isOpened_PredictScore = false;//change flag state when closing window
 			    }
 			});
 			return null;
 		}
 	}
+	/* Finish implemeting multi-thread classes */
 }

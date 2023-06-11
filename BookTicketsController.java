@@ -14,7 +14,7 @@ public class BookTicketsController implements ActionListener {
 	/* Below are fields */
 	private AccountModel accountModel;
 	private BookTicketsView bookTicketsView;
-	private String errorMessage = ""; 
+	private String errorMessage = ""; //store error message
 	private String ticketText = "";//store movie ticket contents
 	private boolean isException = false;//store boolean data whether there is exception
 	
@@ -33,16 +33,16 @@ public class BookTicketsController implements ActionListener {
 	public BookTicketsController(AccountModel accountModel, BookTicketsView bookTicketsView) {
 		this.accountModel = accountModel;
 		this.bookTicketsView = bookTicketsView;
-		this.bookTicketsView.setListener(this);
-	}
+		this.bookTicketsView.setListener(this);//add action listener
+	}//initialize fields in constructor
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==bookTicketsView.getBookTicketButton()) {
 			try {
 				String input = bookTicketsView.getMovieTitle();
-				if(input.equals("(empty")) throw new EmptySelectionException();
-				else this.MovieTitle = input;
+				if(input.equals("(empty")) throw new EmptySelectionException();//if selected item is '(empty)', throw 'EmptySelectionException'
+				else this.MovieTitle = input;//if there is no exception, store the data
 				
 				input = bookTicketsView.getTheaterType();
 				if(input.equals("(empty")) throw new EmptySelectionException();
@@ -58,10 +58,10 @@ public class BookTicketsController implements ActionListener {
 				
 				input = bookTicketsView.getNumebrOfAdult();
 				input = input.trim();
-				if(input.isEmpty()) throw new EmptyException(); 
-				else if(!isNumber(input)) throw new NumberFormatException();
-				else if(Integer.parseInt(input) < 0) throw new NumberBoundaryException();
-				else {
+				if(input.isEmpty()) throw new EmptyException(); //if entered data is blank, throw 'EmptyException'
+				else if(!isNumber(input)) throw new NumberFormatException();//if entered data is not in number format, throw 'NumberFormatException'
+				else if(Integer.parseInt(input) < 0) throw new NumberBoundaryException();//if entered data is not in correct boundary, throw 'NumberBoundaryException'
+				else {//if there is no exception, calculate price according to theater type
 					this.NumberOfAdult = input;
 					if(bookTicketsView.getTheaterType().equals("Original Theater")) {
 						this.TotalPrice += 10000 * Integer.parseInt(input);
@@ -79,10 +79,10 @@ public class BookTicketsController implements ActionListener {
 				
 				input = bookTicketsView.getNumberOfSenior();
 				input = input.trim();
-				if(input.isEmpty()) throw new EmptyException(); 
-				else if(!isNumber(input)) throw new NumberFormatException();
-				else if(Integer.parseInt(input) < 0) throw new NumberBoundaryException();
-				else {
+				if(input.isEmpty()) throw new EmptyException(); //if entered data is blank, throw 'EmptyException'
+				else if(!isNumber(input)) throw new NumberFormatException();//if entered data is not in number format, throw 'NumberFormatException'
+				else if(Integer.parseInt(input) < 0) throw new NumberBoundaryException();//if entered data is not in correct boundary, throw 'NumberBoundaryException'
+				else {//if there is no exception, calculate price according to theater type
 					this.NumberOfSenior = input;
 					if(bookTicketsView.getTheaterType().equals("Original Theater")) {
 						this.TotalPrice += 8000 * Integer.parseInt(input);
@@ -100,10 +100,10 @@ public class BookTicketsController implements ActionListener {
 				
 				input = bookTicketsView.getNumberOfChild();
 				input = input.trim();
-				if(input.isEmpty()) throw new EmptyException(); 
-				else if(!isNumber(input)) throw new NumberFormatException();
-				else if(Integer.parseInt(input) < 0) throw new NumberBoundaryException();
-				else {
+				if(input.isEmpty()) throw new EmptyException(); //if entered data is blank, throw 'EmptyException'
+				else if(!isNumber(input)) throw new NumberFormatException();//if entered data is not in number format, throw 'NumberFormatException'
+				else if(Integer.parseInt(input) < 0) throw new NumberBoundaryException();//if entered data is not in correct boundary, throw 'NumberBoundaryException'
+				else {//if there is no exception, calculate price according to theater type
 					this.NumberOfChild = input;
 					if(bookTicketsView.getTheaterType().equals("Original Theater")) {
 						this.TotalPrice += 5000 * Integer.parseInt(input);
@@ -119,42 +119,42 @@ public class BookTicketsController implements ActionListener {
 					}
 				}
 				
-				if(NumberOfChild.equals("0") && NumberOfSenior.equals("0") && NumberOfAdult.equals("0")) throw new ZeroQuantityException();
+				if(NumberOfChild.equals("0") && NumberOfSenior.equals("0") && NumberOfAdult.equals("0")) throw new ZeroQuantityException();//if entered 3 data of adult, senior and child are all 0, throw 'ZeroQuantityException'
 				
 				input = bookTicketsView.getAppliedCoupons();
 				input = input.trim();
-				if(input.isEmpty()) throw new EmptyException(); 
-				else if(!isNumber(input)) throw new NumberFormatException();
-				else if(Integer.parseInt(input) > accountModel.getNumberOfCoupons()) throw new LackException();
+				if(input.isEmpty()) throw new EmptyException(); //if entered data is blank, throw 'EmptyException'
+				else if(!isNumber(input)) throw new NumberFormatException();//if entered data is not in number format, throw 'NumberFormatException'
+				else if(Integer.parseInt(input) > accountModel.getNumberOfCoupons()) throw new LackException();//if entered data is bigger than the number of coupons left, throw 'LackException'
 				else {
-					this.DiscountedPrice += 1000 * Integer.parseInt(input);
-					accountModel.setNumberOfCoupons(accountModel.getNumberOfCoupons() - Integer.parseInt(input));
+					this.DiscountedPrice += 1000 * Integer.parseInt(input);//calculate discounted price
+					accountModel.setNumberOfCoupons(accountModel.getNumberOfCoupons() - Integer.parseInt(input));//set the number of coupons left
 				}
 				
 				input = bookTicketsView.getUsedPoints();
 				input = input.trim();
-				if(input.isEmpty()) throw new EmptyException(); 
-				else if(!isNumber(input)) throw new NumberFormatException();
-				else if(Integer.parseInt(input) > accountModel.getAmountOfPoints()) throw new LackException();
+				if(input.isEmpty()) throw new EmptyException(); //if entered data is blank, throw 'EmptyException'
+				else if(!isNumber(input)) throw new NumberFormatException();//if entered data is not in number format, throw 'NumberFormatException'
+				else if(Integer.parseInt(input) > accountModel.getAmountOfPoints()) throw new LackException();//if entered data is bigger than the number of coupons left, throw 'LackException'
 				else {
-					this.DiscountedPrice += Integer.parseInt(input);
-					accountModel.setAmountOfPoints(accountModel.getAmountOfPoints() - Integer.parseInt(input));
+					this.DiscountedPrice += Integer.parseInt(input);//calculate discounted price
+					accountModel.setAmountOfPoints(accountModel.getAmountOfPoints() - Integer.parseInt(input));//set the number of coupons left
 				}
 				
-				this.TotalPrice -= this.DiscountedPrice;
+				this.TotalPrice -= this.DiscountedPrice;//subtract discounted price from total price
 			}
-			catch(Exception ex) {
-				isException = true;
+			catch(Exception ex) {//catch exception
+				isException = true;//change flag state
 				JOptionPane.showMessageDialog(null, errorMessage, "Error Message", JOptionPane.ERROR_MESSAGE);//show the problem message in pop-up window
 			}
 			finally {
-				if(isException == false) {
+				if(isException == false) {//if there was no exception
 					printMovieTicket();//print movie ticket in text file
-					accountModel.increaseNumberOfTickets();
-					accountModel.increaseNumberOfCoupons();
-					accountModel.increaseAmountOfPoints(100);
+					accountModel.increaseNumberOfTickets();//add 1 ticket
+					accountModel.increaseNumberOfCoupons();//add 1 coupon
+					accountModel.increaseAmountOfPoints(100);//add 100 points
 					JOptionPane.showMessageDialog(null, "Ticket Successfully Booked!\n\n->Your tickets have been sent and a coupon and points have been credited to your account.", "Success Message", JOptionPane.INFORMATION_MESSAGE);//show success message if there is no exception
-					bookTicketsView.dispose();
+					bookTicketsView.dispose();//dispose window
 				}
 				
 				//reset and clear fields
@@ -202,7 +202,7 @@ public class BookTicketsController implements ActionListener {
 		}
 	}
 	
-	public boolean isNumber(String input) {
+	public boolean isNumber(String input) {//determine whether input data is in number format
 		input = input.trim();
 		for(int i = 0; i < input.length(); i++) {
 			if(!Character.isDigit(input.charAt(i))) return false;
@@ -210,6 +210,7 @@ public class BookTicketsController implements ActionListener {
 		return true;
 	}
 	
+	/* Below are Exception classes */
 	public class ZeroQuantityException extends Exception {
 		public ZeroQuantityException() {
 			errorMessage = "Ticket quantity cannot be zero. Please select at least one ticket.\n";
@@ -245,5 +246,5 @@ public class BookTicketsController implements ActionListener {
 			errorMessage = "You should select item except '(empty)'.\n";
 		}
 	}
-	
+	/* Finish implementing Exception classes */
 }
