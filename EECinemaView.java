@@ -2,6 +2,7 @@ package Main;
 
 import java.awt.EventQueue;
 import java.net.URL;
+import java.util.List;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
@@ -604,7 +605,7 @@ public class EECinemaView extends JFrame {
 		TicketsTitle_label.setFont(new Font("굴림", Font.BOLD, 12));
 		TicketsSate_pannel.add(TicketsTitle_label, BorderLayout.WEST);
 		
-		TicketsNumber_label = new JLabel("0");
+		TicketsNumber_label = new JLabel("");
 		TicketsNumber_label.setHorizontalAlignment(SwingConstants.CENTER);
 		TicketsSate_pannel.add(TicketsNumber_label);
 		
@@ -618,7 +619,7 @@ public class EECinemaView extends JFrame {
 		CouponTitle_label.setFont(new Font("굴림", Font.BOLD, 12));
 		CouponState_pannel.add(CouponTitle_label, BorderLayout.WEST);
 		
-		CouponLeft_label = new JLabel("0");
+		CouponLeft_label = new JLabel("");
 		CouponLeft_label.setHorizontalAlignment(SwingConstants.CENTER);
 		CouponState_pannel.add(CouponLeft_label);
 		
@@ -632,7 +633,7 @@ public class EECinemaView extends JFrame {
 		PointsTitle_label.setHorizontalAlignment(SwingConstants.RIGHT);
 		PointsState_panel.add(PointsTitle_label, BorderLayout.WEST);
 		
-		PointsLeft_label = new JLabel("0");
+		PointsLeft_label = new JLabel("");
 		PointsLeft_label.setHorizontalAlignment(SwingConstants.CENTER);
 		PointsState_panel.add(PointsLeft_label);
 	}
@@ -686,5 +687,38 @@ public class EECinemaView extends JFrame {
 	public void setMovie5Score(String input) {
 		this.Movie5Score_label.setText(input);
 	}
+	public void setTicketsNumberLabel(String input) {
+		this.TicketsNumber_label.setText(input);
+	}
+	public void setCouponLeftLabel(String input) {
+		this.CouponLeft_label.setText(input);
+	}
+	public void setPointsLeftLabel(String input) {
+		this.PointsLeft_label.setText(input);
+	}
 	/* Finish implementing setter-methods */
+	
+	public void clearState() {
+		this.getLogInButton().setText("Log In");
+		this.setHelloNameLabel("Hello~!(NAME)");
+		this.setTicketsNumberLabel("");
+		this.setCouponLeftLabel("");
+		this.setPointsLeftLabel("");
+	}
+	
+	public void updateState(AccountModel accountModel) {
+		this.getLogInButton().setText("Log Out");
+		this.setHelloNameLabel("Hello~! "+accountModel.getUserName());
+		this.setTicketsNumberLabel(Integer.toString(accountModel.getNumberOfTickets()));
+		this.setCouponLeftLabel(Integer.toString(accountModel.getNumberOfCoupons()));
+		this.setPointsLeftLabel(Integer.toString(accountModel.getAmountOfPoints()));
+	}
+	
+	public void updateMovieScoreState(List<MovieModel> movies) {
+		this.setMovie1Score(Float.toString(movies.get(0).getAverageScore()));
+		this.setMovie2Score(Float.toString(movies.get(1).getAverageScore()));
+		this.setMovie3Score(Float.toString(movies.get(2).getAverageScore()));
+		this.setMovie4Score(Float.toString(movies.get(3).getAverageScore()));
+		this.setMovie5Score(Float.toString(movies.get(4).getAverageScore()));
+	}
 }

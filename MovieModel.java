@@ -43,4 +43,10 @@ public class MovieModel {
 	public void calculateAverageScore() {
 		this.averageScore = this.sumOfScores / this.numberOfRatings;
 	}//calculate average score by dividing sum of scores by number of ratings
+	
+	public void encapsulateRatingProcess(float score) {
+		addSumOfMovieScore(score);
+		addRating();
+		calculateAverageScore();
+	}//encapsulate updating rating information in movie model
 }

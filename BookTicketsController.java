@@ -119,11 +119,13 @@ public class BookTicketsController implements ActionListener {
 					}
 				}
 				
+				if(NumberOfChild.equals("0") && NumberOfSenior.equals("0") && NumberOfAdult.equals("0")) throw new ZeroQuantityException();
+				
 				input = bookTicketsView.getAppliedCoupons();
 				input = input.trim();
 				if(input.isEmpty()) throw new EmptyException(); 
 				else if(!isNumber(input)) throw new NumberFormatException();
-				else if(Integer.parseInt(input) < accountModel.getNumberOfCoupons()) throw new NumberBoundaryException();
+				else if(Integer.parseInt(input) > accountModel.getNumberOfCoupons()) throw new LackException();
 				else {
 					this.DiscountedPrice += 1000 * Integer.parseInt(input);
 					accountModel.setNumberOfCoupons(accountModel.getNumberOfCoupons() - Integer.parseInt(input));
@@ -133,7 +135,7 @@ public class BookTicketsController implements ActionListener {
 				input = input.trim();
 				if(input.isEmpty()) throw new EmptyException(); 
 				else if(!isNumber(input)) throw new NumberFormatException();
-				else if(Integer.parseInt(input) < accountModel.getAmountOfPoints()) throw new NumberBoundaryException();
+				else if(Integer.parseInt(input) > accountModel.getAmountOfPoints()) throw new LackException();
 				else {
 					this.DiscountedPrice += Integer.parseInt(input);
 					accountModel.setAmountOfPoints(accountModel.getAmountOfPoints() - Integer.parseInt(input));
@@ -150,7 +152,8 @@ public class BookTicketsController implements ActionListener {
 					printMovieTicket();//print movie ticket in text file
 					accountModel.increaseNumberOfTickets();
 					accountModel.increaseNumberOfCoupons();
-					JOptionPane.showMessageDialog(null, "Ticket Successfully Booked!\n\n->Your tickets have been sent and a coupon has been credited to your account.", "Success Message", JOptionPane.INFORMATION_MESSAGE);//show success message if there is no exception
+					accountModel.increaseAmountOfPoints(100);
+					JOptionPane.showMessageDialog(null, "Ticket Successfully Booked!\n\n->Your tickets have been sent and a coupon and points have been credited to your account.", "Success Message", JOptionPane.INFORMATION_MESSAGE);//show success message if there is no exception
 					bookTicketsView.dispose();
 				}
 				
@@ -205,6 +208,18 @@ public class BookTicketsController implements ActionListener {
 			if(!Character.isDigit(input.charAt(i))) return false;
 		}
 		return true;
+	}
+	
+	public class ZeroQuantityException extends Exception {
+		public ZeroQuantityException() {
+			errorMessage = "Ticket quantity cannot be zero. Please select at least one ticket.\n";
+		}
+	}
+	
+	public class LackException extends Exception {
+		public LackException() {
+			errorMessage = "Insufficient Coupons or Points\n";
+		}
 	}
 	
 	public class EmptyException extends Exception {

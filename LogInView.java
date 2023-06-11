@@ -18,6 +18,8 @@ import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class LogInView extends JDialog {
 
@@ -31,6 +33,8 @@ public class LogInView extends JDialog {
 	 * Create the dialog.
 	 */
 	public LogInView() {
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Desktop\\final_project\\final_project\\eeCinema.png"));
 		setTitle("EECinema Log In");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -39,13 +43,14 @@ public class LogInView extends JDialog {
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
 		gbl_contentPanel.columnWidths = new int[] {0, 0, 0, 0};
 		gbl_contentPanel.rowHeights = new int[]{0, 0};
-		gbl_contentPanel.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPanel.columnWeights = new double[]{1.0, 1.0, 1.0};
 		gbl_contentPanel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		contentPanel.setLayout(gbl_contentPanel);
 		{
 			JPanel West_panel = new JPanel();
 			West_panel.setBackground(new Color(240, 240, 240));
 			GridBagConstraints gbc_West_panel = new GridBagConstraints();
+			gbc_West_panel.insets = new Insets(0, 0, 0, 5);
 			gbc_West_panel.weightx = 1.0;
 			gbc_West_panel.fill = GridBagConstraints.BOTH;
 			gbc_West_panel.gridx = 0;
@@ -106,6 +111,7 @@ public class LogInView extends JDialog {
 		{
 			JPanel Input_panel = new JPanel();
 			GridBagConstraints gbc_Input_panel = new GridBagConstraints();
+			gbc_Input_panel.insets = new Insets(0, 0, 0, 5);
 			gbc_Input_panel.weightx = 3.0;
 			gbc_Input_panel.fill = GridBagConstraints.BOTH;
 			gbc_Input_panel.gridx = 1;
@@ -136,6 +142,7 @@ public class LogInView extends JDialog {
 			panel_2.setLayout(new BorderLayout(5, 5));
 			
 			ID_textField = new JTextField();
+			ID_textField.setPreferredSize(new Dimension(150, 21));
 			panel_2.add(ID_textField, BorderLayout.CENTER);
 			ID_textField.setColumns(10);
 			
@@ -150,6 +157,7 @@ public class LogInView extends JDialog {
 			panel_3.setLayout(new BorderLayout(5, 5));
 			
 			Password_textField = new JTextField();
+			Password_textField.setPreferredSize(new Dimension(150, 21));
 			panel_3.add(Password_textField, BorderLayout.CENTER);
 			Password_textField.setColumns(10);
 			
@@ -161,6 +169,14 @@ public class LogInView extends JDialog {
 			gbc_panel_4.gridy = 3;
 			Input_panel.add(panel_4, gbc_panel_4);
 		}
+		
+		JPanel East_panel = new JPanel();
+		GridBagConstraints gbc_East_panel = new GridBagConstraints();
+		gbc_East_panel.insets = new Insets(0, 0, 0, 5);
+		gbc_East_panel.fill = GridBagConstraints.BOTH;
+		gbc_East_panel.gridx = 2;
+		gbc_East_panel.gridy = 0;
+		contentPanel.add(East_panel, gbc_East_panel);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBackground(new Color(255, 98, 98));

@@ -17,10 +17,16 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
 
 public class TheaterInformationView extends JFrame {
 
 	private JPanel contentPane;
+	private JButton Pet_button;
+	private JButton DolbyIMAX_button;
+	private JButton Extreme4D_button;
+	private JButton Original_button;
+	private JTextArea TheaterTypeExplanation_textArea;
 
 
 	/**
@@ -41,74 +47,100 @@ public class TheaterInformationView extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 98, 98));
-		panel.add(panel_1, BorderLayout.WEST);
-		panel_1.setLayout(new BorderLayout(15, 15));
+		JPanel West_panel = new JPanel();
+		West_panel.setBackground(new Color(255, 98, 98));
+		panel.add(West_panel, BorderLayout.WEST);
+		West_panel.setLayout(new BorderLayout(15, 15));
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 98, 98));
-		panel_1.add(panel_2, BorderLayout.NORTH);
-		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.Y_AXIS));
+		JPanel TheaterType_panel = new JPanel();
+		TheaterType_panel.setBackground(new Color(255, 98, 98));
+		West_panel.add(TheaterType_panel, BorderLayout.NORTH);
+		TheaterType_panel.setLayout(new BoxLayout(TheaterType_panel, BoxLayout.Y_AXIS));
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(255, 98, 98));
-		panel_2.add(panel_3);
-		panel_3.setLayout(new BorderLayout(5, 5));
+		JPanel Original_panel = new JPanel();
+		Original_panel.setBackground(new Color(255, 98, 98));
+		TheaterType_panel.add(Original_panel);
+		Original_panel.setLayout(new BorderLayout(5, 5));
 		
-		JLabel lblNewLabel = new JLabel("Original Theater");
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		panel_3.add(lblNewLabel, BorderLayout.WEST);
+		JLabel Original_label = new JLabel("Original Theater");
+		Original_label.setFont(new Font("굴림", Font.BOLD, 14));
+		Original_panel.add(Original_label, BorderLayout.WEST);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setBackground(new Color(245, 245, 245));
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go_smallSize.png"));
-		panel_3.add(btnNewButton, BorderLayout.EAST);
+		Original_button = new JButton("");
+		Original_button.setBackground(new Color(245, 245, 245));
+		Original_button.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go_smallSize.png"));
+		Original_panel.add(Original_button, BorderLayout.EAST);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(255, 98, 98));
-		panel_2.add(panel_4);
-		panel_4.setLayout(new BorderLayout(5, 5));
+		JPanel Extreme4D_panel = new JPanel();
+		Extreme4D_panel.setBackground(new Color(255, 98, 98));
+		TheaterType_panel.add(Extreme4D_panel);
+		Extreme4D_panel.setLayout(new BorderLayout(5, 5));
 		
-		JLabel lblNewLabel_1 = new JLabel("4D Extreme Theater");
-		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 14));
-		panel_4.add(lblNewLabel_1, BorderLayout.WEST);
+		JLabel Extreme4D_label = new JLabel("4D Extreme Theater");
+		Extreme4D_label.setFont(new Font("굴림", Font.BOLD, 14));
+		Extreme4D_panel.add(Extreme4D_label, BorderLayout.WEST);
 		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setBackground(new Color(245, 245, 245));
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go_smallSize.png"));
-		panel_4.add(btnNewButton_1, BorderLayout.EAST);
+		Extreme4D_button = new JButton("");
+		Extreme4D_button.setBackground(new Color(245, 245, 245));
+		Extreme4D_button.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go_smallSize.png"));
+		Extreme4D_panel.add(Extreme4D_button, BorderLayout.EAST);
 		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(new Color(255, 98, 98));
-		panel_2.add(panel_5);
-		panel_5.setLayout(new BorderLayout(5, 5));
+		JPanel DolbyIMAX_panel = new JPanel();
+		DolbyIMAX_panel.setBackground(new Color(255, 98, 98));
+		TheaterType_panel.add(DolbyIMAX_panel);
+		DolbyIMAX_panel.setLayout(new BorderLayout(5, 5));
 		
-		JLabel lblNewLabel_2 = new JLabel("Dolby & IMAX Theater");
-		lblNewLabel_2.setFont(new Font("굴림", Font.BOLD, 14));
-		panel_5.add(lblNewLabel_2, BorderLayout.WEST);
+		JLabel DolbyIMAX_label = new JLabel("Dolby & IMAX Theater");
+		DolbyIMAX_label.setFont(new Font("굴림", Font.BOLD, 14));
+		DolbyIMAX_panel.add(DolbyIMAX_label, BorderLayout.WEST);
 		
-		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setBackground(new Color(245, 245, 245));
-		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go_smallSize.png"));
-		panel_5.add(btnNewButton_2, BorderLayout.EAST);
+		DolbyIMAX_button = new JButton("");
+		DolbyIMAX_button.setBackground(new Color(245, 245, 245));
+		DolbyIMAX_button.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go_smallSize.png"));
+		DolbyIMAX_panel.add(DolbyIMAX_button, BorderLayout.EAST);
 		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(255, 98, 98));
-		panel_2.add(panel_6);
-		panel_6.setLayout(new BorderLayout(5, 5));
+		JPanel Pet_panel = new JPanel();
+		Pet_panel.setBackground(new Color(255, 98, 98));
+		TheaterType_panel.add(Pet_panel);
+		Pet_panel.setLayout(new BorderLayout(5, 5));
 		
-		JLabel lblNewLabel_3 = new JLabel("Pet Theater");
-		lblNewLabel_3.setFont(new Font("굴림", Font.BOLD, 14));
-		panel_6.add(lblNewLabel_3, BorderLayout.WEST);
+		JLabel Pet_label = new JLabel("Pet Theater");
+		Pet_label.setFont(new Font("굴림", Font.BOLD, 14));
+		Pet_panel.add(Pet_label, BorderLayout.WEST);
 		
-		JButton btnNewButton_3 = new JButton("");
-		btnNewButton_3.setBackground(new Color(245, 245, 245));
-		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go_smallSize.png"));
-		panel_6.add(btnNewButton_3, BorderLayout.EAST);
+		Pet_button = new JButton("");
+		Pet_button.setBackground(new Color(245, 245, 245));
+		Pet_button.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go_smallSize.png"));
+		Pet_panel.add(Pet_button, BorderLayout.EAST);
 		
-		JTextArea textArea = new JTextArea();
-		panel.add(textArea, BorderLayout.CENTER);
+		TheaterTypeExplanation_textArea = new JTextArea();
+		panel.add(TheaterTypeExplanation_textArea, BorderLayout.CENTER);
 	}
+	
+	public void setListener(ActionListener listener) {
+		Original_button.addActionListener(listener);
+		Extreme4D_button.addActionListener(listener);
+		DolbyIMAX_button.addActionListener(listener);
+		Pet_button.addActionListener(listener);
+	}//add action listener to each button
+	
+	/* Below are getter-methods */
+	public JButton getOriginalButton() {
+		return this.Original_button;
+	}
+	public JButton getExtreme4DButton() {
+		return this.Extreme4D_button;
+	}
+	public JButton getDolbyIMAXButton() {
+		return this.DolbyIMAX_button;
+	}
+	public JButton getPetButton() {
+		return this.Pet_button;
+	}
+	/* Finish implementing getter-methods */
+	
+	public void setExpanationTextArea(String input) {
+		TheaterTypeExplanation_textArea.setText(input);
+	}//setter method for Theater Type explanation text area
 
 }

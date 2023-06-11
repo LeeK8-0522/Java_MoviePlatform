@@ -16,9 +16,13 @@ public class EECinemaController implements ActionListener {
 	private TheaterInformationThread theaterInformationThread;//swing worker multi-thread for Theater Information service 
 	private BookTicketsThread bookTicketsThread;//swing worker multi-thread for BookTickets service
 	private LogInThread logInThread;//swing worker multi-thread for Log-In service
-	private boolean isOpened_TheaterInformation;//represent state whether Theater Information View window is opened
-	private boolean isOpened_BookTickets;//represent state whether Book Tickets View window is opened
+	private RateMoviesThread rateMoviesThread;//swing worker multi-thread for rating service
+	private PredictScoreThread predictScoreThread;//swing worker multi-thread for predicting score service
+	private boolean isOpened_TheaterInformation;//represents state whether Theater Information View window is opened
+	private boolean isOpened_BookTickets;//represents state whether Book Tickets View window is opened
 	private boolean isOpened_LogIn;//represents state whether Log-In window is opened
+	private boolean isOpened_RateMovies;//represents state whether Rate-Movies window is opened
+	private boolean isOpened_PredictScore;//represents state whether Predict-Score window is opened
 	private boolean isLoggedIn;//represent state whether user logged in
 	private int loggedInUserIndex = -1;//represents logged in user's account index
 	
@@ -29,17 +33,10 @@ public class EECinemaController implements ActionListener {
 		this.eecinemaView.setActionListener(this);
 		this.isOpened_BookTickets = false;
 		this.isOpened_TheaterInformation = false;
+		this.isOpened_RateMovies = false;
 		this.isLoggedIn = false;
-		updateScreen();
+		this.eecinemaView.updateMovieScoreState(movies);
 	}//initialize fields by constructor
-	
-	public void updateScreen() {
-		this.eecinemaView.setMovie1Score("Score: "+Float.toString(movies.get(0).getAverageScore()));
-		this.eecinemaView.setMovie2Score("Score: "+Float.toString(movies.get(1).getAverageScore()));
-		this.eecinemaView.setMovie3Score("Score: "+Float.toString(movies.get(2).getAverageScore()));
-		this.eecinemaView.setMovie4Score("Score: "+Float.toString(movies.get(3).getAverageScore()));
-		this.eecinemaView.setMovie5Score("Score: "+Float.toString(movies.get(4).getAverageScore()));
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -70,8 +67,27 @@ public class EECinemaController implements ActionListener {
 			}
 			else {
 				isLoggedIn = false;
-				eecinemaView.getLogInButton().setText("Log In");
-				eecinemaView.setHelloNameLabel("Hello~!(NAME)");
+				eecinemaView.clearState();
+			}
+		}
+		else if(e.getSource() == eecinemaView.getRateMoviesButton()) {
+			if(isLoggedIn == false) {
+				JOptionPane.showMessageDialog(null, "You have to log in first before using services.", "Information Message", JOptionPane.INFORMATION_MESSAGE);//show the problem message in pop-up window
+			}
+			else if(isOpened_RateMovies == false) {
+				isOpened_RateMovies = true;
+				rateMoviesThread = new RateMoviesThread();
+				rateMoviesThread.execute();
+			}
+		}
+		else if(e.getSource() == eecinemaView.getPersonalizedScorePredictionButton()) {
+			if(isLoggedIn == false) {
+				JOptionPane.showMessageDialog(null, "You have to log in first before using services.", "Information Message", JOptionPane.INFORMATION_MESSAGE);//show the problem message in pop-up window
+			}
+			else if(isOpened_PredictScore == false) {
+				isOpened_PredictScore = true;
+				predictScoreThread = new PredictScoreThread();
+				predictScoreThread.execute();
 			}
 		}
 	}
@@ -92,8 +108,7 @@ public class EECinemaController implements ActionListener {
 			        loggedInUserIndex = logInController.getLoggedInIndex();
 			        if(loggedInUserIndex >= 0) {
 						isLoggedIn = true;
-						eecinemaView.getLogInButton().setText("Log Out");
-						eecinemaView.setHelloNameLabel("Hello~! "+users.get(loggedInUserIndex).getUserName());
+						eecinemaView.updateState(users.get(loggedInUserIndex));
 					}
 			    }
 			});
@@ -114,10 +129,12 @@ public class EECinemaController implements ActionListener {
 	
 	public class TheaterInformationThread extends SwingWorker<Boolean, Float> {
 		private TheaterInformationView theaterInformationView;
+		private TheaterInformationController theaterInformationController;
 		
 		@Override
 		protected Boolean doInBackground() throws Exception {
 			theaterInformationView = new TheaterInformationView();
+			theaterInformationController = new TheaterInformationController(theaterInformationView);
 			theaterInformationView.setVisible(true);
 			theaterInformationView.addWindowListener(new WindowAdapter() {
 			    @Override
@@ -137,7 +154,6 @@ public class EECinemaController implements ActionListener {
 		
 		@Override
 		protected void done() {
-			theaterInformationView = null;
 		}		
 	}
 	
@@ -155,6 +171,7 @@ public class EECinemaController implements ActionListener {
 			    public void windowClosed(WindowEvent e) {
 			        cancel(true);
 			        isOpened_BookTickets = false;
+			        eecinemaView.updateState(users.get(loggedInUserIndex));
 			    }
 			});
 			return null;
@@ -169,6 +186,47 @@ public class EECinemaController implements ActionListener {
 		@Override
 		protected void done() {
 			
+		}
+	}
+	
+	public class RateMoviesThread extends SwingWorker<Boolean, Float> {
+		private RateMoviesView rateMoviesView;
+		private RateMoviesController rateMoviesController;
+		
+		@Override
+		protected Boolean doInBackground() throws Exception {
+			rateMoviesView = new RateMoviesView();
+			rateMoviesController = new RateMoviesController(rateMoviesView, users.get(loggedInUserIndex), movies);
+			rateMoviesView.setVisible(true);
+			rateMoviesView.addWindowListener(new WindowAdapter() {
+			    @Override
+			    public void windowClosed(WindowEvent e) {
+			        cancel(true);
+			        isOpened_RateMovies = false;
+			        eecinemaView.updateMovieScoreState(movies);
+			    }
+			});
+			return null;
+		}
+	}
+	
+	public class PredictScoreThread extends SwingWorker<Boolean, Float> {
+		private PersonalizedScorePredictionView personalizedScorePredictionView;
+		private PersonalizedScorePredictionController personalizedScorePredictionController;
+		
+		@Override
+		protected Boolean doInBackground() throws Exception {
+			personalizedScorePredictionView = new PersonalizedScorePredictionView();
+			personalizedScorePredictionController = new PersonalizedScorePredictionController(movies, users, personalizedScorePredictionView, loggedInUserIndex);
+			personalizedScorePredictionView.setVisible(true);
+			personalizedScorePredictionView.addWindowListener(new WindowAdapter() {
+			    @Override
+			    public void windowClosed(WindowEvent e) {
+			        cancel(true);
+			        isOpened_PredictScore = false;
+			    }
+			});
+			return null;
 		}
 	}
 }

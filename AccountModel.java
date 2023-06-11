@@ -9,7 +9,7 @@ public class AccountModel {
 	private int numberOfCoupons;//store user's number of coupon
 	private int amountOfPoints;//store user's amount of points
 	private int numberOfTickets;//store user's number of tickets
-	private int [] scoreArray = new int [5];//store user's score in integer array(each index represents particular movie: eg. index '1'-> "Four Rooms")
+	private float [] scoreArray = new float [5];//store user's score in integer array(each index represents particular movie: eg. index '1'-> "Four Rooms")
 	
 	public AccountModel(String userName, String ID, String password) {
 		this.userName = userName;
@@ -48,7 +48,7 @@ public class AccountModel {
 		return this.numberOfTickets;
 	}
 	
-	public int getRating(int index) {
+	public float getRating(int index) {
 		return this.scoreArray[index];
 	}
 	/* finish implementing getter-methods */
@@ -78,7 +78,7 @@ public class AccountModel {
 		this.numberOfTickets = input;
 	}
 	
-	public void setRating(int score, int index) {
+	public void setRating(float score, int index) {
 		this.scoreArray[index] = score;
 	}//store rating score in index 
 	/* finish implementing setter-methods */
@@ -91,7 +91,7 @@ public class AccountModel {
 		this.numberOfCoupons++;
 	}
 	
-	public void increaseAmountOfPoints() {
-		this.amountOfPoints++;
+	public void increaseAmountOfPoints(int input) {
+		this.amountOfPoints += input;
 	}
 }
