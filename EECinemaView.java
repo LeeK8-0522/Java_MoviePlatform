@@ -39,605 +39,652 @@ import javax.swing.JInternalFrame;
 import java.awt.CardLayout;
 import java.awt.Toolkit;
 
-public class EECinemaView {
+public class EECinemaView extends JFrame {
 
-	private JFrame EECinema_frame;
+	/* Below are fields */
+	//private JFrame EECinema_frame;
+	private JButton LogIn_button;
+	private JLabel HelloName_label;
+	private JLabel Movie1Score_label;
+	private JLabel Movie2Score_label;
+	private JLabel Movie3Score_label;
+	private JLabel Movie4Score_label;
+	private JLabel Movie5Score_label;
+	private JButton BookTicketsButton_button;
+	private JButton TheaterInformationButton_button;
+	private JButton RateMoviesButton_button;
+	private JButton PersonalizedScorePredictionButton_button;
+	private JLabel PointsLeft_label;
+	private JLabel CouponLeft_label;
+	private JLabel TicketsNumber_label;
+	private JProgressBar progressBar;
+	/* Finish implementing fields */
+	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EECinemaView window = new EECinemaView();
-					window.EECinema_frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public EECinemaView() {
-		initialize();
-	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		EECinema_frame = new JFrame();
-		EECinema_frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Desktop\\final_project\\final_project\\eeCinema.png"));
-		EECinema_frame.setTitle("EECinema");
-		EECinema_frame.setBounds(100, 100, 561, 608);
-		EECinema_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		EECinema_frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel = new JPanel();
-		EECinema_frame.getContentPane().add(panel, BorderLayout.NORTH);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setPreferredSize(new Dimension(10, 70));
-		panel_1.setBackground(new Color(255, 98, 98));
-		panel.add(panel_1);
-		panel_1.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(0, 0, 86, 70);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\film.png"));
-		panel_1.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("EECinema");
-		lblNewLabel_1.setBounds(91, 0, 443, 70);
-		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD | Font.ITALIC, 22));
-		panel_1.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("offer Extreme Experience");
-		lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 11));
-		lblNewLabel_2.setBounds(91, 45, 158, 15);
-		panel_1.add(lblNewLabel_2);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 98, 98));
-		panel.add(panel_2);
-		panel_2.setLayout(new GridLayout(2, 0, 0, 0));
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(255, 98, 98));
-		panel_2.add(panel_3);
-		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
-		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(new Color(255, 98, 98));
-		panel_3.add(panel_5);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(255, 98, 98));
-		panel_3.add(panel_6);
-		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.X_AXIS));
-		
-		JButton btnNewButton = new JButton("Log Out");
-		btnNewButton.setFont(new Font("굴림", Font.PLAIN, 12));
-		panel_6.add(btnNewButton);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(255, 98, 98));
-		panel_2.add(panel_4);
-		panel_4.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_3 = new JLabel("Hello~! (NAME)");
-		lblNewLabel_3.setFont(new Font("굴림", Font.BOLD, 11));
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_4.add(lblNewLabel_3, BorderLayout.SOUTH);
-		
-		JPanel panel_7 = new JPanel();
-		EECinema_frame.getContentPane().add(panel_7, BorderLayout.CENTER);
-		GridBagLayout gbl_panel_7 = new GridBagLayout();
-		gbl_panel_7.columnWidths = new int[]{0, 0};
-		gbl_panel_7.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_7.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_7.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		panel_7.setLayout(gbl_panel_7);
-		
-		JPanel panel_11 = new JPanel();
-		panel_11.setLayout(null);
-		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
-		gbc_panel_11.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_11.weighty = 1.0;
-		gbc_panel_11.fill = GridBagConstraints.BOTH;
-		gbc_panel_11.gridx = 0;
-		gbc_panel_11.gridy = 0;
-		panel_7.add(panel_11, gbc_panel_11);
-		
-		JLabel lblNewLabel_6 = new JLabel("Top Box Office");
-		lblNewLabel_6.setBounds(12, 0, 157, 43);
-		lblNewLabel_6.setFont(new Font("돋움체", Font.BOLD | Font.ITALIC, 14));
-		panel_11.add(lblNewLabel_6);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane.weighty = 6.0;
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 1;
-		panel_7.add(scrollPane, gbc_scrollPane);
-		
-		JPanel panel_12 = new JPanel();
-		scrollPane.setViewportView(panel_12);
-		panel_12.setLayout(new BoxLayout(panel_12, BoxLayout.X_AXIS));
-		
-		JPanel panel_13 = new JPanel();
-		panel_12.add(panel_13);
-		panel_13.setLayout(new BorderLayout(5, 5));
-		
-		JLabel lblNewLabel_7 = new JLabel("Toy Story");
-		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_7.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_13.add(lblNewLabel_7, BorderLayout.NORTH);
-		
-		JLabel lblNewLabel_8 = new JLabel("Score:");
-		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_8.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_13.add(lblNewLabel_8, BorderLayout.SOUTH);
-		
-		JLabel lblNewLabel_9 = new JLabel("");
-		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_9.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\ToyStory.jpg"));
-		panel_13.add(lblNewLabel_9, BorderLayout.CENTER);
-		
-		JPanel panel_14 = new JPanel();
-		panel_12.add(panel_14);
-		panel_14.setLayout(new BorderLayout(5, 5));
-		
-		JLabel lblNewLabel_10 = new JLabel("Four Rooms");
-		lblNewLabel_10.setFont(new Font("굴림", Font.BOLD, 12));
-		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_14.add(lblNewLabel_10, BorderLayout.NORTH);
-		
-		JLabel lblNewLabel_11 = new JLabel("");
-		lblNewLabel_11.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\FourRooms.jpg"));
-		lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_14.add(lblNewLabel_11, BorderLayout.CENTER);
-		
-		JLabel lblNewLabel_12 = new JLabel("Score:");
-		lblNewLabel_12.setFont(new Font("굴림", Font.BOLD, 12));
-		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_14.add(lblNewLabel_12, BorderLayout.SOUTH);
-		
-		JPanel panel_15 = new JPanel();
-		panel_12.add(panel_15);
-		panel_15.setLayout(new BorderLayout(5, 5));
-		
-		JLabel lblNewLabel_13 = new JLabel("Casino");
-		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_13.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_15.add(lblNewLabel_13, BorderLayout.NORTH);
-		
-		JLabel lblNewLabel_14 = new JLabel("");
-		lblNewLabel_14.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\Casino.jpg"));
-		lblNewLabel_14.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_15.add(lblNewLabel_14, BorderLayout.CENTER);
-		
-		JLabel lblNewLabel_15 = new JLabel("Score:");
-		lblNewLabel_15.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_15.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_15.add(lblNewLabel_15, BorderLayout.SOUTH);
-		
-		JPanel panel_16 = new JPanel();
-		panel_12.add(panel_16);
-		panel_16.setLayout(new BorderLayout(5, 5));
-		
-		JLabel lblNewLabel_16 = new JLabel("Golden Eye");
-		lblNewLabel_16.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_16.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_16.add(lblNewLabel_16, BorderLayout.NORTH);
-		
-		JLabel lblNewLabel_17 = new JLabel("Score:");
-		lblNewLabel_17.setFont(new Font("굴림", Font.BOLD, 12));
-		lblNewLabel_17.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_16.add(lblNewLabel_17, BorderLayout.SOUTH);
-		
-		JLabel lblNewLabel_18 = new JLabel("");
-		lblNewLabel_18.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_18.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\GoldenEye.jpg"));
-		panel_16.add(lblNewLabel_18, BorderLayout.CENTER);
-		
-		JPanel panel_17 = new JPanel();
-		panel_12.add(panel_17);
-		panel_17.setLayout(new BorderLayout(5, 5));
-		
-		JLabel lblNewLabel_19 = new JLabel("Heat");
-		lblNewLabel_19.setFont(new Font("굴림", Font.BOLD, 12));
-		lblNewLabel_19.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_17.add(lblNewLabel_19, BorderLayout.NORTH);
-		
-		JLabel lblNewLabel_20 = new JLabel("");
-		lblNewLabel_20.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\Heat.jpg"));
-		lblNewLabel_20.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_17.add(lblNewLabel_20, BorderLayout.CENTER);
-		
-		JLabel lblNewLabel_21 = new JLabel("Score:");
-		lblNewLabel_21.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_21.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_17.add(lblNewLabel_21, BorderLayout.SOUTH);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
-		gbc_scrollPane_1.weighty = 9.0;
-		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane_1.gridx = 0;
-		gbc_scrollPane_1.gridy = 2;
-		panel_7.add(scrollPane_1, gbc_scrollPane_1);
-		
-		JPanel panel_21 = new JPanel();
-		scrollPane_1.setViewportView(panel_21);
-		panel_21.setLayout(new BoxLayout(panel_21, BoxLayout.X_AXIS));
-		
-		JPanel panel_22 = new JPanel();
-		panel_21.add(panel_22);
-		GridBagLayout gbl_panel_22 = new GridBagLayout();
-		gbl_panel_22.columnWidths = new int[]{0, 0};
-		gbl_panel_22.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_22.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_22.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		panel_22.setLayout(gbl_panel_22);
-		
-		JPanel panel_26 = new JPanel();
-		GridBagConstraints gbc_panel_26 = new GridBagConstraints();
-		gbc_panel_26.weighty = 1.0;
-		gbc_panel_26.fill = GridBagConstraints.BOTH;
-		gbc_panel_26.gridx = 0;
-		gbc_panel_26.gridy = 0;
-		panel_22.add(panel_26, gbc_panel_26);
-		
-		JPanel panel_27 = new JPanel();
-		GridBagConstraints gbc_panel_27 = new GridBagConstraints();
-		gbc_panel_27.weighty = 6.0;
-		gbc_panel_27.fill = GridBagConstraints.BOTH;
-		gbc_panel_27.gridx = 0;
-		gbc_panel_27.gridy = 1;
-		panel_22.add(panel_27, gbc_panel_27);
-		panel_27.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_26 = new JLabel("Book Tickets");
-		lblNewLabel_26.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_26.setFont(new Font("굴림", Font.BOLD, 16));
-		panel_27.add(lblNewLabel_26, BorderLayout.CENTER);
-		
-		JLabel lblNewLabel_30 = new JLabel("");
-		lblNewLabel_30.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\ticket.png"));
-		lblNewLabel_30.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_27.add(lblNewLabel_30, BorderLayout.SOUTH);
-		
-		JPanel panel_28 = new JPanel();
-		GridBagConstraints gbc_panel_28 = new GridBagConstraints();
-		gbc_panel_28.weighty = 3.0;
-		gbc_panel_28.fill = GridBagConstraints.BOTH;
-		gbc_panel_28.gridx = 0;
-		gbc_panel_28.gridy = 2;
-		panel_22.add(panel_28, gbc_panel_28);
-		GridBagLayout gbl_panel_28 = new GridBagLayout();
-		gbl_panel_28.columnWidths = new int[]{0, 0};
-		gbl_panel_28.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_28.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_28.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-		panel_28.setLayout(gbl_panel_28);
-		
-		JPanel panel_38 = new JPanel();
-		GridBagConstraints gbc_panel_38 = new GridBagConstraints();
-		gbc_panel_38.weighty = 1.0;
-		gbc_panel_38.fill = GridBagConstraints.BOTH;
-		gbc_panel_38.gridx = 0;
-		gbc_panel_38.gridy = 0;
-		panel_28.add(panel_38, gbc_panel_38);
-		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setBackground(new Color(245, 245, 245));
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go-removebg-preview (1).png"));
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.weighty = 3.0;
-		gbc_btnNewButton_1.gridx = 0;
-		gbc_btnNewButton_1.gridy = 1;
-		panel_28.add(btnNewButton_1, gbc_btnNewButton_1);
-		
-		JPanel panel_39 = new JPanel();
-		GridBagConstraints gbc_panel_39 = new GridBagConstraints();
-		gbc_panel_39.weighty = 1.0;
-		gbc_panel_39.fill = GridBagConstraints.BOTH;
-		gbc_panel_39.gridx = 0;
-		gbc_panel_39.gridy = 2;
-		panel_28.add(panel_39, gbc_panel_39);
-		
-		JPanel panel_23 = new JPanel();
-		panel_21.add(panel_23);
-		GridBagLayout gbl_panel_23 = new GridBagLayout();
-		gbl_panel_23.columnWidths = new int[]{0, 0};
-		gbl_panel_23.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_23.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_23.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		panel_23.setLayout(gbl_panel_23);
-		
-		JPanel panel_29 = new JPanel();
-		GridBagConstraints gbc_panel_29 = new GridBagConstraints();
-		gbc_panel_29.weighty = 1.0;
-		gbc_panel_29.fill = GridBagConstraints.BOTH;
-		gbc_panel_29.gridx = 0;
-		gbc_panel_29.gridy = 0;
-		panel_23.add(panel_29, gbc_panel_29);
-		
-		JPanel panel_30 = new JPanel();
-		GridBagConstraints gbc_panel_30 = new GridBagConstraints();
-		gbc_panel_30.weighty = 6.0;
-		gbc_panel_30.fill = GridBagConstraints.BOTH;
-		gbc_panel_30.gridx = 0;
-		gbc_panel_30.gridy = 1;
-		panel_23.add(panel_30, gbc_panel_30);
-		panel_30.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_27 = new JLabel("Theaters Information");
-		lblNewLabel_27.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_27.setFont(new Font("굴림", Font.BOLD, 16));
-		panel_30.add(lblNewLabel_27, BorderLayout.CENTER);
-		
-		JLabel lblNewLabel_31 = new JLabel("");
-		lblNewLabel_31.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\theater.png"));
-		lblNewLabel_31.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_30.add(lblNewLabel_31, BorderLayout.SOUTH);
-		
-		JPanel panel_31 = new JPanel();
-		GridBagConstraints gbc_panel_31 = new GridBagConstraints();
-		gbc_panel_31.weighty = 3.0;
-		gbc_panel_31.fill = GridBagConstraints.BOTH;
-		gbc_panel_31.gridx = 0;
-		gbc_panel_31.gridy = 2;
-		panel_23.add(panel_31, gbc_panel_31);
-		GridBagLayout gbl_panel_31 = new GridBagLayout();
-		gbl_panel_31.columnWidths = new int[]{0, 0};
-		gbl_panel_31.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_31.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_31.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-		panel_31.setLayout(gbl_panel_31);
-		
-		JPanel panel_40 = new JPanel();
-		GridBagConstraints gbc_panel_40 = new GridBagConstraints();
-		gbc_panel_40.weighty = 1.0;
-		gbc_panel_40.fill = GridBagConstraints.BOTH;
-		gbc_panel_40.gridx = 0;
-		gbc_panel_40.gridy = 0;
-		panel_31.add(panel_40, gbc_panel_40);
-		
-		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setBackground(new Color(245, 245, 245));
-		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go-removebg-preview (1).png"));
-		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
-		gbc_btnNewButton_2.weighty = 3.0;
-		gbc_btnNewButton_2.gridx = 0;
-		gbc_btnNewButton_2.gridy = 1;
-		panel_31.add(btnNewButton_2, gbc_btnNewButton_2);
-		
-		JPanel panel_41 = new JPanel();
-		GridBagConstraints gbc_panel_41 = new GridBagConstraints();
-		gbc_panel_41.weighty = 1.0;
-		gbc_panel_41.fill = GridBagConstraints.BOTH;
-		gbc_panel_41.gridx = 0;
-		gbc_panel_41.gridy = 2;
-		panel_31.add(panel_41, gbc_panel_41);
-		
-		JPanel panel_24 = new JPanel();
-		panel_21.add(panel_24);
-		GridBagLayout gbl_panel_24 = new GridBagLayout();
-		gbl_panel_24.columnWidths = new int[]{0, 0};
-		gbl_panel_24.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_24.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_24.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		panel_24.setLayout(gbl_panel_24);
-		
-		JPanel panel_32 = new JPanel();
-		GridBagConstraints gbc_panel_32 = new GridBagConstraints();
-		gbc_panel_32.weighty = 1.0;
-		gbc_panel_32.fill = GridBagConstraints.BOTH;
-		gbc_panel_32.gridx = 0;
-		gbc_panel_32.gridy = 0;
-		panel_24.add(panel_32, gbc_panel_32);
-		
-		JPanel panel_33 = new JPanel();
-		GridBagConstraints gbc_panel_33 = new GridBagConstraints();
-		gbc_panel_33.weighty = 6.0;
-		gbc_panel_33.fill = GridBagConstraints.BOTH;
-		gbc_panel_33.gridx = 0;
-		gbc_panel_33.gridy = 1;
-		panel_24.add(panel_33, gbc_panel_33);
-		panel_33.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_28 = new JLabel("Rate Movies");
-		lblNewLabel_28.setFont(new Font("굴림", Font.BOLD, 16));
-		lblNewLabel_28.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_33.add(lblNewLabel_28, BorderLayout.CENTER);
-		
-		JLabel lblNewLabel_32 = new JLabel("");
-		lblNewLabel_32.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\score-removebg-preview.png"));
-		lblNewLabel_32.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_33.add(lblNewLabel_32, BorderLayout.SOUTH);
-		
-		JPanel panel_34 = new JPanel();
-		GridBagConstraints gbc_panel_34 = new GridBagConstraints();
-		gbc_panel_34.weighty = 3.0;
-		gbc_panel_34.fill = GridBagConstraints.BOTH;
-		gbc_panel_34.gridx = 0;
-		gbc_panel_34.gridy = 2;
-		panel_24.add(panel_34, gbc_panel_34);
-		GridBagLayout gbl_panel_34 = new GridBagLayout();
-		gbl_panel_34.columnWidths = new int[]{0, 0};
-		gbl_panel_34.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_34.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_34.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-		panel_34.setLayout(gbl_panel_34);
-		
-		JPanel panel_42 = new JPanel();
-		GridBagConstraints gbc_panel_42 = new GridBagConstraints();
-		gbc_panel_42.weighty = 1.0;
-		gbc_panel_42.fill = GridBagConstraints.BOTH;
-		gbc_panel_42.gridx = 0;
-		gbc_panel_42.gridy = 0;
-		panel_34.add(panel_42, gbc_panel_42);
-		
-		JButton btnNewButton_3 = new JButton("");
-		btnNewButton_3.setBackground(new Color(245, 245, 245));
-		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go-removebg-preview (1).png"));
-		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
-		gbc_btnNewButton_3.weighty = 3.0;
-		gbc_btnNewButton_3.gridx = 0;
-		gbc_btnNewButton_3.gridy = 1;
-		panel_34.add(btnNewButton_3, gbc_btnNewButton_3);
-		
-		JPanel panel_43 = new JPanel();
-		GridBagConstraints gbc_panel_43 = new GridBagConstraints();
-		gbc_panel_43.weighty = 1.0;
-		gbc_panel_43.fill = GridBagConstraints.BOTH;
-		gbc_panel_43.gridx = 0;
-		gbc_panel_43.gridy = 2;
-		panel_34.add(panel_43, gbc_panel_43);
-		
-		JPanel panel_25 = new JPanel();
-		panel_21.add(panel_25);
-		GridBagLayout gbl_panel_25 = new GridBagLayout();
-		gbl_panel_25.columnWidths = new int[]{0, 0};
-		gbl_panel_25.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_25.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_25.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		panel_25.setLayout(gbl_panel_25);
-		
-		JPanel panel_35 = new JPanel();
-		GridBagConstraints gbc_panel_35 = new GridBagConstraints();
-		gbc_panel_35.weighty = 1.0;
-		gbc_panel_35.fill = GridBagConstraints.BOTH;
-		gbc_panel_35.gridx = 0;
-		gbc_panel_35.gridy = 0;
-		panel_25.add(panel_35, gbc_panel_35);
-		
-		JPanel panel_36 = new JPanel();
-		GridBagConstraints gbc_panel_36 = new GridBagConstraints();
-		gbc_panel_36.weighty = 6.0;
-		gbc_panel_36.fill = GridBagConstraints.BOTH;
-		gbc_panel_36.gridx = 0;
-		gbc_panel_36.gridy = 1;
-		panel_25.add(panel_36, gbc_panel_36);
-		panel_36.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_29 = new JLabel("Personalized Score Prediction");
-		lblNewLabel_29.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_29.setFont(new Font("굴림", Font.BOLD, 16));
-		panel_36.add(lblNewLabel_29, BorderLayout.CENTER);
-		
-		JLabel lblNewLabel_33 = new JLabel("");
-		lblNewLabel_33.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\ai.png"));
-		lblNewLabel_33.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_36.add(lblNewLabel_33, BorderLayout.SOUTH);
-		
-		JPanel panel_37 = new JPanel();
-		GridBagConstraints gbc_panel_37 = new GridBagConstraints();
-		gbc_panel_37.weighty = 3.0;
-		gbc_panel_37.fill = GridBagConstraints.BOTH;
-		gbc_panel_37.gridx = 0;
-		gbc_panel_37.gridy = 2;
-		panel_25.add(panel_37, gbc_panel_37);
-		GridBagLayout gbl_panel_37 = new GridBagLayout();
-		gbl_panel_37.columnWidths = new int[]{0, 0};
-		gbl_panel_37.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_37.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_37.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-		panel_37.setLayout(gbl_panel_37);
-		
-		JPanel panel_44 = new JPanel();
-		GridBagConstraints gbc_panel_44 = new GridBagConstraints();
-		gbc_panel_44.weighty = 1.0;
-		gbc_panel_44.fill = GridBagConstraints.BOTH;
-		gbc_panel_44.gridx = 0;
-		gbc_panel_44.gridy = 0;
-		panel_37.add(panel_44, gbc_panel_44);
-		
-		JButton btnNewButton_4 = new JButton("");
-		btnNewButton_4.setBackground(new Color(245, 245, 245));
-		btnNewButton_4.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go-removebg-preview (1).png"));
-		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
-		gbc_btnNewButton_4.weighty = 3.0;
-		gbc_btnNewButton_4.gridx = 0;
-		gbc_btnNewButton_4.gridy = 1;
-		panel_37.add(btnNewButton_4, gbc_btnNewButton_4);
-		
-		JPanel panel_45 = new JPanel();
-		GridBagConstraints gbc_panel_45 = new GridBagConstraints();
-		gbc_panel_45.weighty = 1.0;
-		gbc_panel_45.fill = GridBagConstraints.BOTH;
-		gbc_panel_45.gridx = 0;
-		gbc_panel_45.gridy = 2;
-		panel_37.add(panel_45, gbc_panel_45);
-		
-		JPanel panel_8 = new JPanel();
-		panel_8.setBackground(new Color(255, 98, 98));
-		EECinema_frame.getContentPane().add(panel_8, BorderLayout.SOUTH);
-		panel_8.setLayout(new BoxLayout(panel_8, BoxLayout.X_AXIS));
-		
-		JPanel panel_9 = new JPanel();
-		panel_9.setBackground(new Color(255, 98, 98));
-		panel_8.add(panel_9);
-		panel_9.setLayout(new BoxLayout(panel_9, BoxLayout.X_AXIS));
-		
-		JProgressBar progressBar = new JProgressBar();
+	public EECinemaView() {
+		//EECinema_frame = new JFrame();
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Desktop\\final_project\\final_project\\eeCinema.png"));
+		setTitle("EECinema");
+		setBounds(100, 100, 561, 608);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JPanel North_panel = new JPanel();
+		getContentPane().add(North_panel, BorderLayout.NORTH);
+		North_panel.setLayout(new BoxLayout(North_panel, BoxLayout.X_AXIS));
+		
+		JPanel Title_panel = new JPanel();
+		Title_panel.setPreferredSize(new Dimension(10, 70));
+		Title_panel.setBackground(new Color(255, 98, 98));
+		North_panel.add(Title_panel);
+		Title_panel.setLayout(null);
+		
+		JLabel TitleImage_label = new JLabel("");
+		TitleImage_label.setBounds(0, 0, 86, 70);
+		TitleImage_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\film.png"));
+		Title_panel.add(TitleImage_label);
+		
+		JLabel EECinemTitle_label = new JLabel("EECinema");
+		EECinemTitle_label.setBounds(91, 0, 443, 70);
+		EECinemTitle_label.setFont(new Font("굴림", Font.BOLD | Font.ITALIC, 22));
+		Title_panel.add(EECinemTitle_label);
+		
+		JLabel EECinemaSubtitle_label = new JLabel("offer Extreme Experience");
+		EECinemaSubtitle_label.setFont(new Font("굴림", Font.PLAIN, 11));
+		EECinemaSubtitle_label.setBounds(91, 45, 158, 15);
+		Title_panel.add(EECinemaSubtitle_label);
+		
+		JPanel NorthEast_panel = new JPanel();
+		NorthEast_panel.setBackground(new Color(255, 98, 98));
+		North_panel.add(NorthEast_panel);
+		NorthEast_panel.setLayout(new GridLayout(2, 0, 0, 0));
+		
+		JPanel NorthEastUpper_panel = new JPanel();
+		NorthEastUpper_panel.setBackground(new Color(255, 98, 98));
+		NorthEast_panel.add(NorthEastUpper_panel);
+		NorthEastUpper_panel.setLayout(new BoxLayout(NorthEastUpper_panel, BoxLayout.X_AXIS));
+		
+		JPanel blank_panel = new JPanel();
+		blank_panel.setBackground(new Color(255, 98, 98));
+		NorthEastUpper_panel.add(blank_panel);
+		
+		LogIn_button = new JButton("Log In");
+		NorthEastUpper_panel.add(LogIn_button);
+		LogIn_button.setFont(new Font("굴림", Font.PLAIN, 12));
+		
+		JPanel LogIn_panel = new JPanel();
+		LogIn_panel.setBackground(new Color(255, 98, 98));
+		NorthEastUpper_panel.add(LogIn_panel);
+		LogIn_panel.setLayout(new BoxLayout(LogIn_panel, BoxLayout.X_AXIS));
+		
+		JPanel HelloName_panel = new JPanel();
+		HelloName_panel.setBackground(new Color(255, 98, 98));
+		NorthEast_panel.add(HelloName_panel);
+		HelloName_panel.setLayout(new BorderLayout(0, 0));
+		
+		HelloName_label = new JLabel("Hello~! (NAME)");
+		HelloName_label.setFont(new Font("굴림", Font.BOLD, 11));
+		HelloName_label.setHorizontalAlignment(SwingConstants.CENTER);
+		HelloName_panel.add(HelloName_label, BorderLayout.SOUTH);
+		
+		JPanel Center_panel = new JPanel();
+		getContentPane().add(Center_panel, BorderLayout.CENTER);
+		GridBagLayout gbl_Center_panel = new GridBagLayout();
+		gbl_Center_panel.columnWidths = new int[]{0, 0};
+		gbl_Center_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_Center_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_Center_panel.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		Center_panel.setLayout(gbl_Center_panel);
+		
+		JPanel OnScreen_panel = new JPanel();
+		OnScreen_panel.setLayout(null);
+		GridBagConstraints gbc_OnScreen_panel = new GridBagConstraints();
+		gbc_OnScreen_panel.insets = new Insets(0, 0, 5, 0);
+		gbc_OnScreen_panel.weighty = 1.0;
+		gbc_OnScreen_panel.fill = GridBagConstraints.BOTH;
+		gbc_OnScreen_panel.gridx = 0;
+		gbc_OnScreen_panel.gridy = 0;
+		Center_panel.add(OnScreen_panel, gbc_OnScreen_panel);
+		
+		JLabel OnScreen_label = new JLabel("On Screen:");
+		OnScreen_label.setBounds(12, 0, 157, 43);
+		OnScreen_label.setFont(new Font("돋움체", Font.BOLD | Font.ITALIC, 14));
+		OnScreen_panel.add(OnScreen_label);
+		
+		JScrollPane OnScreen_scrollPane = new JScrollPane();
+		GridBagConstraints gbc_OnScreen_scrollPane = new GridBagConstraints();
+		gbc_OnScreen_scrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_OnScreen_scrollPane.weighty = 6.0;
+		gbc_OnScreen_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_OnScreen_scrollPane.gridx = 0;
+		gbc_OnScreen_scrollPane.gridy = 1;
+		Center_panel.add(OnScreen_scrollPane, gbc_OnScreen_scrollPane);
+		
+		JPanel Movies_panel = new JPanel();
+		OnScreen_scrollPane.setViewportView(Movies_panel);
+		Movies_panel.setLayout(new BoxLayout(Movies_panel, BoxLayout.X_AXIS));
+		
+		JPanel Movie1_panel = new JPanel();
+		Movies_panel.add(Movie1_panel);
+		Movie1_panel.setLayout(new BorderLayout(5, 5));
+		
+		JLabel Movie1Title_label = new JLabel("Toy Story");
+		Movie1Title_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie1Title_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie1_panel.add(Movie1Title_label, BorderLayout.NORTH);
+		
+		Movie1Score_label = new JLabel("Score:");
+		Movie1Score_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie1Score_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie1_panel.add(Movie1Score_label, BorderLayout.SOUTH);
+		
+		JLabel Movie1Poster_label = new JLabel("");
+		Movie1Poster_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie1Poster_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\ToyStory.jpg"));
+		Movie1_panel.add(Movie1Poster_label, BorderLayout.CENTER);
+		
+		JPanel Movie2_panel = new JPanel();
+		Movies_panel.add(Movie2_panel);
+		Movie2_panel.setLayout(new BorderLayout(5, 5));
+		
+		JLabel Movie2Title_label = new JLabel("Four Rooms");
+		Movie2Title_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie2Title_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie2_panel.add(Movie2Title_label, BorderLayout.NORTH);
+		
+		JLabel Movie2Poster_label = new JLabel("");
+		Movie2Poster_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\FourRooms.jpg"));
+		Movie2Poster_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie2_panel.add(Movie2Poster_label, BorderLayout.CENTER);
+		
+		Movie2Score_label = new JLabel("Score:");
+		Movie2Score_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie2Score_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie2_panel.add(Movie2Score_label, BorderLayout.SOUTH);
+		
+		JPanel Movie3_panel = new JPanel();
+		Movies_panel.add(Movie3_panel);
+		Movie3_panel.setLayout(new BorderLayout(5, 5));
+		
+		JLabel Movie3Title_label = new JLabel("Casino");
+		Movie3Title_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie3Title_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie3_panel.add(Movie3Title_label, BorderLayout.NORTH);
+		
+		JLabel Movie3Poster_label = new JLabel("");
+		Movie3Poster_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\Casino.jpg"));
+		Movie3Poster_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie3_panel.add(Movie3Poster_label, BorderLayout.CENTER);
+		
+		Movie3Score_label = new JLabel("Score:");
+		Movie3Score_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie3Score_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie3_panel.add(Movie3Score_label, BorderLayout.SOUTH);
+		
+		JPanel Movie4_panel = new JPanel();
+		Movies_panel.add(Movie4_panel);
+		Movie4_panel.setLayout(new BorderLayout(5, 5));
+		
+		JLabel Movie4Title_label = new JLabel("Golden Eye");
+		Movie4Title_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie4Title_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie4_panel.add(Movie4Title_label, BorderLayout.NORTH);
+		
+		Movie4Score_label = new JLabel("Score:");
+		Movie4Score_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie4Score_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie4_panel.add(Movie4Score_label, BorderLayout.SOUTH);
+		
+		JLabel Movie4Poster_label = new JLabel("");
+		Movie4Poster_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie4Poster_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\GoldenEye.jpg"));
+		Movie4_panel.add(Movie4Poster_label, BorderLayout.CENTER);
+		
+		JPanel Movie5_panel = new JPanel();
+		Movies_panel.add(Movie5_panel);
+		Movie5_panel.setLayout(new BorderLayout(5, 5));
+		
+		JLabel Movie5Title_label = new JLabel("Heat");
+		Movie5Title_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie5Title_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie5_panel.add(Movie5Title_label, BorderLayout.NORTH);
+		
+		JLabel Movie5Poster_label = new JLabel("");
+		Movie5Poster_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\Heat.jpg"));
+		Movie5Poster_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie5_panel.add(Movie5Poster_label, BorderLayout.CENTER);
+		
+		Movie5Score_label = new JLabel("Score:");
+		Movie5Score_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Movie5Score_label.setFont(new Font("굴림", Font.BOLD, 12));
+		Movie5_panel.add(Movie5Score_label, BorderLayout.SOUTH);
+		
+		JScrollPane Menu_scrollPane = new JScrollPane();
+		GridBagConstraints gbc_Menu_scrollPane = new GridBagConstraints();
+		gbc_Menu_scrollPane.weighty = 9.0;
+		gbc_Menu_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_Menu_scrollPane.gridx = 0;
+		gbc_Menu_scrollPane.gridy = 2;
+		Center_panel.add(Menu_scrollPane, gbc_Menu_scrollPane);
+		
+		JPanel Menu_panel = new JPanel();
+		Menu_scrollPane.setViewportView(Menu_panel);
+		Menu_panel.setLayout(new BoxLayout(Menu_panel, BoxLayout.X_AXIS));
+		
+		JPanel BookTickets_panel = new JPanel();
+		Menu_panel.add(BookTickets_panel);
+		GridBagLayout gbl_BookTickets_panel = new GridBagLayout();
+		gbl_BookTickets_panel.columnWidths = new int[]{0, 0};
+		gbl_BookTickets_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_BookTickets_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_BookTickets_panel.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		BookTickets_panel.setLayout(gbl_BookTickets_panel);
+		
+		JPanel BookTicketsBlank_panel = new JPanel();
+		GridBagConstraints gbc_BookTicketsBlank_panel = new GridBagConstraints();
+		gbc_BookTicketsBlank_panel.weighty = 1.0;
+		gbc_BookTicketsBlank_panel.fill = GridBagConstraints.BOTH;
+		gbc_BookTicketsBlank_panel.gridx = 0;
+		gbc_BookTicketsBlank_panel.gridy = 0;
+		BookTickets_panel.add(BookTicketsBlank_panel, gbc_BookTicketsBlank_panel);
+		
+		JPanel BookTicketsImage_panel = new JPanel();
+		GridBagConstraints gbc_BookTicketsImage_panel = new GridBagConstraints();
+		gbc_BookTicketsImage_panel.weighty = 6.0;
+		gbc_BookTicketsImage_panel.fill = GridBagConstraints.BOTH;
+		gbc_BookTicketsImage_panel.gridx = 0;
+		gbc_BookTicketsImage_panel.gridy = 1;
+		BookTickets_panel.add(BookTicketsImage_panel, gbc_BookTicketsImage_panel);
+		BookTicketsImage_panel.setLayout(new BorderLayout(0, 0));
+		
+		JLabel BookTicketsTitle_label = new JLabel("Book Tickets");
+		BookTicketsTitle_label.setHorizontalAlignment(SwingConstants.CENTER);
+		BookTicketsTitle_label.setFont(new Font("굴림", Font.BOLD, 16));
+		BookTicketsImage_panel.add(BookTicketsTitle_label, BorderLayout.CENTER);
+		
+		JLabel BookTicketsImage_label = new JLabel("");
+		BookTicketsImage_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\ticket.png"));
+		BookTicketsImage_label.setHorizontalAlignment(SwingConstants.CENTER);
+		BookTicketsImage_panel.add(BookTicketsImage_label, BorderLayout.SOUTH);
+		
+		JPanel BookTicketsButton_panel = new JPanel();
+		GridBagConstraints gbc_BookTicketsButton_panel = new GridBagConstraints();
+		gbc_BookTicketsButton_panel.weighty = 3.0;
+		gbc_BookTicketsButton_panel.fill = GridBagConstraints.BOTH;
+		gbc_BookTicketsButton_panel.gridx = 0;
+		gbc_BookTicketsButton_panel.gridy = 2;
+		BookTickets_panel.add(BookTicketsButton_panel, gbc_BookTicketsButton_panel);
+		GridBagLayout gbl_BookTicketsButton_panel = new GridBagLayout();
+		gbl_BookTicketsButton_panel.columnWidths = new int[]{0, 0};
+		gbl_BookTicketsButton_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_BookTicketsButton_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_BookTicketsButton_panel.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
+		BookTicketsButton_panel.setLayout(gbl_BookTicketsButton_panel);
+		
+		JPanel BookTicketsButtonNorth_panel = new JPanel();
+		GridBagConstraints gbc_BookTicketsButtonNorth_panel = new GridBagConstraints();
+		gbc_BookTicketsButtonNorth_panel.weighty = 1.0;
+		gbc_BookTicketsButtonNorth_panel.fill = GridBagConstraints.BOTH;
+		gbc_BookTicketsButtonNorth_panel.gridx = 0;
+		gbc_BookTicketsButtonNorth_panel.gridy = 0;
+		BookTicketsButton_panel.add(BookTicketsButtonNorth_panel, gbc_BookTicketsButtonNorth_panel);
+		
+		BookTicketsButton_button = new JButton("");
+		BookTicketsButton_button.setBackground(new Color(245, 245, 245));
+		BookTicketsButton_button.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go-removebg-preview (1).png"));
+		GridBagConstraints gbc_BookTicketsButton_button = new GridBagConstraints();
+		gbc_BookTicketsButton_button.weighty = 3.0;
+		gbc_BookTicketsButton_button.gridx = 0;
+		gbc_BookTicketsButton_button.gridy = 1;
+		BookTicketsButton_panel.add(BookTicketsButton_button, gbc_BookTicketsButton_button);
+		
+		JPanel BookTicketsButtonSouth_panel = new JPanel();
+		GridBagConstraints gbc_BookTicketsButtonSouth_panel = new GridBagConstraints();
+		gbc_BookTicketsButtonSouth_panel.weighty = 1.0;
+		gbc_BookTicketsButtonSouth_panel.fill = GridBagConstraints.BOTH;
+		gbc_BookTicketsButtonSouth_panel.gridx = 0;
+		gbc_BookTicketsButtonSouth_panel.gridy = 2;
+		BookTicketsButton_panel.add(BookTicketsButtonSouth_panel, gbc_BookTicketsButtonSouth_panel);
+		
+		JPanel TheaterInformation_panel = new JPanel();
+		Menu_panel.add(TheaterInformation_panel);
+		GridBagLayout gbl_TheaterInformation_panel = new GridBagLayout();
+		gbl_TheaterInformation_panel.columnWidths = new int[]{0, 0};
+		gbl_TheaterInformation_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_TheaterInformation_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_TheaterInformation_panel.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		TheaterInformation_panel.setLayout(gbl_TheaterInformation_panel);
+		
+		JPanel TheaterInformationBlank_panel = new JPanel();
+		GridBagConstraints gbc_TheaterInformationBlank_panel = new GridBagConstraints();
+		gbc_TheaterInformationBlank_panel.weighty = 1.0;
+		gbc_TheaterInformationBlank_panel.fill = GridBagConstraints.BOTH;
+		gbc_TheaterInformationBlank_panel.gridx = 0;
+		gbc_TheaterInformationBlank_panel.gridy = 0;
+		TheaterInformation_panel.add(TheaterInformationBlank_panel, gbc_TheaterInformationBlank_panel);
+		
+		JPanel TheaterInformationImage_panel = new JPanel();
+		GridBagConstraints gbc_TheaterInformationImage_panel = new GridBagConstraints();
+		gbc_TheaterInformationImage_panel.weighty = 6.0;
+		gbc_TheaterInformationImage_panel.fill = GridBagConstraints.BOTH;
+		gbc_TheaterInformationImage_panel.gridx = 0;
+		gbc_TheaterInformationImage_panel.gridy = 1;
+		TheaterInformation_panel.add(TheaterInformationImage_panel, gbc_TheaterInformationImage_panel);
+		TheaterInformationImage_panel.setLayout(new BorderLayout(0, 0));
+		
+		JLabel TheaterInformationTitle_label = new JLabel("Theaters Information");
+		TheaterInformationTitle_label.setHorizontalAlignment(SwingConstants.CENTER);
+		TheaterInformationTitle_label.setFont(new Font("굴림", Font.BOLD, 16));
+		TheaterInformationImage_panel.add(TheaterInformationTitle_label, BorderLayout.CENTER);
+		
+		JLabel TheaterInformationImage_label = new JLabel("");
+		TheaterInformationImage_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\theater.png"));
+		TheaterInformationImage_label.setHorizontalAlignment(SwingConstants.CENTER);
+		TheaterInformationImage_panel.add(TheaterInformationImage_label, BorderLayout.SOUTH);
+		
+		JPanel TheaterInformationButton_panel = new JPanel();
+		GridBagConstraints gbc_TheaterInformationButton_panel = new GridBagConstraints();
+		gbc_TheaterInformationButton_panel.weighty = 3.0;
+		gbc_TheaterInformationButton_panel.fill = GridBagConstraints.BOTH;
+		gbc_TheaterInformationButton_panel.gridx = 0;
+		gbc_TheaterInformationButton_panel.gridy = 2;
+		TheaterInformation_panel.add(TheaterInformationButton_panel, gbc_TheaterInformationButton_panel);
+		GridBagLayout gbl_TheaterInformationButton_panel = new GridBagLayout();
+		gbl_TheaterInformationButton_panel.columnWidths = new int[]{0, 0};
+		gbl_TheaterInformationButton_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_TheaterInformationButton_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_TheaterInformationButton_panel.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
+		TheaterInformationButton_panel.setLayout(gbl_TheaterInformationButton_panel);
+		
+		JPanel TheaterInformationButtonNorth_panel = new JPanel();
+		GridBagConstraints gbc_TheaterInformationButtonNorth_panel = new GridBagConstraints();
+		gbc_TheaterInformationButtonNorth_panel.weighty = 1.0;
+		gbc_TheaterInformationButtonNorth_panel.fill = GridBagConstraints.BOTH;
+		gbc_TheaterInformationButtonNorth_panel.gridx = 0;
+		gbc_TheaterInformationButtonNorth_panel.gridy = 0;
+		TheaterInformationButton_panel.add(TheaterInformationButtonNorth_panel, gbc_TheaterInformationButtonNorth_panel);
+		
+		TheaterInformationButton_button = new JButton("");
+		TheaterInformationButton_button.setBackground(new Color(245, 245, 245));
+		TheaterInformationButton_button.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go-removebg-preview (1).png"));
+		GridBagConstraints gbc_TheaterInformationButton_button = new GridBagConstraints();
+		gbc_TheaterInformationButton_button.weighty = 3.0;
+		gbc_TheaterInformationButton_button.gridx = 0;
+		gbc_TheaterInformationButton_button.gridy = 1;
+		TheaterInformationButton_panel.add(TheaterInformationButton_button, gbc_TheaterInformationButton_button);
+		
+		JPanel TheaterInformationButtonSouth_panel = new JPanel();
+		GridBagConstraints gbc_TheaterInformationButtonSouth_panel = new GridBagConstraints();
+		gbc_TheaterInformationButtonSouth_panel.weighty = 1.0;
+		gbc_TheaterInformationButtonSouth_panel.fill = GridBagConstraints.BOTH;
+		gbc_TheaterInformationButtonSouth_panel.gridx = 0;
+		gbc_TheaterInformationButtonSouth_panel.gridy = 2;
+		TheaterInformationButton_panel.add(TheaterInformationButtonSouth_panel, gbc_TheaterInformationButtonSouth_panel);
+		
+		JPanel RateMovies_panel = new JPanel();
+		Menu_panel.add(RateMovies_panel);
+		GridBagLayout gbl_RateMovies_panel = new GridBagLayout();
+		gbl_RateMovies_panel.columnWidths = new int[]{0, 0};
+		gbl_RateMovies_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_RateMovies_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_RateMovies_panel.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		RateMovies_panel.setLayout(gbl_RateMovies_panel);
+		
+		JPanel RateMoviesBlank_panel = new JPanel();
+		GridBagConstraints gbc_RateMoviesBlank_panel = new GridBagConstraints();
+		gbc_RateMoviesBlank_panel.weighty = 1.0;
+		gbc_RateMoviesBlank_panel.fill = GridBagConstraints.BOTH;
+		gbc_RateMoviesBlank_panel.gridx = 0;
+		gbc_RateMoviesBlank_panel.gridy = 0;
+		RateMovies_panel.add(RateMoviesBlank_panel, gbc_RateMoviesBlank_panel);
+		
+		JPanel RateMoviesImage_panel = new JPanel();
+		GridBagConstraints gbc_RateMoviesImage_panel = new GridBagConstraints();
+		gbc_RateMoviesImage_panel.weighty = 6.0;
+		gbc_RateMoviesImage_panel.fill = GridBagConstraints.BOTH;
+		gbc_RateMoviesImage_panel.gridx = 0;
+		gbc_RateMoviesImage_panel.gridy = 1;
+		RateMovies_panel.add(RateMoviesImage_panel, gbc_RateMoviesImage_panel);
+		RateMoviesImage_panel.setLayout(new BorderLayout(0, 0));
+		
+		JLabel RateMoviesImageTitle_label = new JLabel("Rate Movies");
+		RateMoviesImageTitle_label.setFont(new Font("굴림", Font.BOLD, 16));
+		RateMoviesImageTitle_label.setHorizontalAlignment(SwingConstants.CENTER);
+		RateMoviesImage_panel.add(RateMoviesImageTitle_label, BorderLayout.CENTER);
+		
+		JLabel RateMoviesImage_label = new JLabel("");
+		RateMoviesImage_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\score-removebg-preview.png"));
+		RateMoviesImage_label.setHorizontalAlignment(SwingConstants.CENTER);
+		RateMoviesImage_panel.add(RateMoviesImage_label, BorderLayout.SOUTH);
+		
+		JPanel RateMoviesButton_panel = new JPanel();
+		GridBagConstraints gbc_RateMoviesButton_panel = new GridBagConstraints();
+		gbc_RateMoviesButton_panel.weighty = 3.0;
+		gbc_RateMoviesButton_panel.fill = GridBagConstraints.BOTH;
+		gbc_RateMoviesButton_panel.gridx = 0;
+		gbc_RateMoviesButton_panel.gridy = 2;
+		RateMovies_panel.add(RateMoviesButton_panel, gbc_RateMoviesButton_panel);
+		GridBagLayout gbl_RateMoviesButton_panel = new GridBagLayout();
+		gbl_RateMoviesButton_panel.columnWidths = new int[]{0, 0};
+		gbl_RateMoviesButton_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_RateMoviesButton_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_RateMoviesButton_panel.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
+		RateMoviesButton_panel.setLayout(gbl_RateMoviesButton_panel);
+		
+		JPanel RateMoviesButtonNorth_panel = new JPanel();
+		GridBagConstraints gbc_RateMoviesButtonNorth_panel = new GridBagConstraints();
+		gbc_RateMoviesButtonNorth_panel.weighty = 1.0;
+		gbc_RateMoviesButtonNorth_panel.fill = GridBagConstraints.BOTH;
+		gbc_RateMoviesButtonNorth_panel.gridx = 0;
+		gbc_RateMoviesButtonNorth_panel.gridy = 0;
+		RateMoviesButton_panel.add(RateMoviesButtonNorth_panel, gbc_RateMoviesButtonNorth_panel);
+		
+		RateMoviesButton_button = new JButton("");
+		RateMoviesButton_button.setBackground(new Color(245, 245, 245));
+		RateMoviesButton_button.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go-removebg-preview (1).png"));
+		GridBagConstraints gbc_RateMoviesButton_button = new GridBagConstraints();
+		gbc_RateMoviesButton_button.weighty = 3.0;
+		gbc_RateMoviesButton_button.gridx = 0;
+		gbc_RateMoviesButton_button.gridy = 1;
+		RateMoviesButton_panel.add(RateMoviesButton_button, gbc_RateMoviesButton_button);
+		
+		JPanel RateMoviesButtonSouth_panel = new JPanel();
+		GridBagConstraints gbc_RateMoviesButtonSouth_panel = new GridBagConstraints();
+		gbc_RateMoviesButtonSouth_panel.weighty = 1.0;
+		gbc_RateMoviesButtonSouth_panel.fill = GridBagConstraints.BOTH;
+		gbc_RateMoviesButtonSouth_panel.gridx = 0;
+		gbc_RateMoviesButtonSouth_panel.gridy = 2;
+		RateMoviesButton_panel.add(RateMoviesButtonSouth_panel, gbc_RateMoviesButtonSouth_panel);
+		
+		JPanel PersonalizedScorePrediction_panel = new JPanel();
+		Menu_panel.add(PersonalizedScorePrediction_panel);
+		GridBagLayout gbl_PersonalizedScorePrediction_panel = new GridBagLayout();
+		gbl_PersonalizedScorePrediction_panel.columnWidths = new int[]{0, 0};
+		gbl_PersonalizedScorePrediction_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_PersonalizedScorePrediction_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_PersonalizedScorePrediction_panel.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		PersonalizedScorePrediction_panel.setLayout(gbl_PersonalizedScorePrediction_panel);
+		
+		JPanel PersonalizedScorePredictionNorth_panel = new JPanel();
+		GridBagConstraints gbc_PersonalizedScorePredictionNorth_panel = new GridBagConstraints();
+		gbc_PersonalizedScorePredictionNorth_panel.weighty = 1.0;
+		gbc_PersonalizedScorePredictionNorth_panel.fill = GridBagConstraints.BOTH;
+		gbc_PersonalizedScorePredictionNorth_panel.gridx = 0;
+		gbc_PersonalizedScorePredictionNorth_panel.gridy = 0;
+		PersonalizedScorePrediction_panel.add(PersonalizedScorePredictionNorth_panel, gbc_PersonalizedScorePredictionNorth_panel);
+		
+		JPanel PersonalizedScorePredictionImage_panel = new JPanel();
+		GridBagConstraints gbc_PersonalizedScorePredictionImage_panel = new GridBagConstraints();
+		gbc_PersonalizedScorePredictionImage_panel.weighty = 6.0;
+		gbc_PersonalizedScorePredictionImage_panel.fill = GridBagConstraints.BOTH;
+		gbc_PersonalizedScorePredictionImage_panel.gridx = 0;
+		gbc_PersonalizedScorePredictionImage_panel.gridy = 1;
+		PersonalizedScorePrediction_panel.add(PersonalizedScorePredictionImage_panel, gbc_PersonalizedScorePredictionImage_panel);
+		PersonalizedScorePredictionImage_panel.setLayout(new BorderLayout(0, 0));
+		
+		JLabel PersonalizedScorePredictionImageTitle_label = new JLabel("Personalized Score Prediction");
+		PersonalizedScorePredictionImageTitle_label.setHorizontalAlignment(SwingConstants.CENTER);
+		PersonalizedScorePredictionImageTitle_label.setFont(new Font("굴림", Font.BOLD, 16));
+		PersonalizedScorePredictionImage_panel.add(PersonalizedScorePredictionImageTitle_label, BorderLayout.CENTER);
+		
+		JLabel PersonalizedScorePredictionImage_label = new JLabel("");
+		PersonalizedScorePredictionImage_label.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\ai.png"));
+		PersonalizedScorePredictionImage_label.setHorizontalAlignment(SwingConstants.CENTER);
+		PersonalizedScorePredictionImage_panel.add(PersonalizedScorePredictionImage_label, BorderLayout.SOUTH);
+		
+		JPanel PersonalizedScorePredictionButton_panel = new JPanel();
+		GridBagConstraints gbc_PersonalizedScorePredictionButton_panel = new GridBagConstraints();
+		gbc_PersonalizedScorePredictionButton_panel.weighty = 3.0;
+		gbc_PersonalizedScorePredictionButton_panel.fill = GridBagConstraints.BOTH;
+		gbc_PersonalizedScorePredictionButton_panel.gridx = 0;
+		gbc_PersonalizedScorePredictionButton_panel.gridy = 2;
+		PersonalizedScorePrediction_panel.add(PersonalizedScorePredictionButton_panel, gbc_PersonalizedScorePredictionButton_panel);
+		GridBagLayout gbl_PersonalizedScorePredictionButton_panel = new GridBagLayout();
+		gbl_PersonalizedScorePredictionButton_panel.columnWidths = new int[]{0, 0};
+		gbl_PersonalizedScorePredictionButton_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_PersonalizedScorePredictionButton_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_PersonalizedScorePredictionButton_panel.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
+		PersonalizedScorePredictionButton_panel.setLayout(gbl_PersonalizedScorePredictionButton_panel);
+		
+		JPanel PersonalizedScorePredictionButtonNorth_panel = new JPanel();
+		GridBagConstraints gbc_PersonalizedScorePredictionButtonNorth_panel = new GridBagConstraints();
+		gbc_PersonalizedScorePredictionButtonNorth_panel.weighty = 1.0;
+		gbc_PersonalizedScorePredictionButtonNorth_panel.fill = GridBagConstraints.BOTH;
+		gbc_PersonalizedScorePredictionButtonNorth_panel.gridx = 0;
+		gbc_PersonalizedScorePredictionButtonNorth_panel.gridy = 0;
+		PersonalizedScorePredictionButton_panel.add(PersonalizedScorePredictionButtonNorth_panel, gbc_PersonalizedScorePredictionButtonNorth_panel);
+		
+		PersonalizedScorePredictionButton_button = new JButton("");
+		PersonalizedScorePredictionButton_button.setBackground(new Color(245, 245, 245));
+		PersonalizedScorePredictionButton_button.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\final_project\\final_project\\go-removebg-preview (1).png"));
+		GridBagConstraints gbc_PersonalizedScorePredictionButton_button = new GridBagConstraints();
+		gbc_PersonalizedScorePredictionButton_button.weighty = 3.0;
+		gbc_PersonalizedScorePredictionButton_button.gridx = 0;
+		gbc_PersonalizedScorePredictionButton_button.gridy = 1;
+		PersonalizedScorePredictionButton_panel.add(PersonalizedScorePredictionButton_button, gbc_PersonalizedScorePredictionButton_button);
+		
+		JPanel PersonalizedScorePredictionButtonSouth_panel = new JPanel();
+		GridBagConstraints gbc_PersonalizedScorePredictionButtonSouth_panel = new GridBagConstraints();
+		gbc_PersonalizedScorePredictionButtonSouth_panel.weighty = 1.0;
+		gbc_PersonalizedScorePredictionButtonSouth_panel.fill = GridBagConstraints.BOTH;
+		gbc_PersonalizedScorePredictionButtonSouth_panel.gridx = 0;
+		gbc_PersonalizedScorePredictionButtonSouth_panel.gridy = 2;
+		PersonalizedScorePredictionButton_panel.add(PersonalizedScorePredictionButtonSouth_panel, gbc_PersonalizedScorePredictionButtonSouth_panel);
+		
+		JPanel State_panel = new JPanel();
+		State_panel.setBackground(new Color(255, 98, 98));
+		getContentPane().add(State_panel, BorderLayout.SOUTH);
+		State_panel.setLayout(new BoxLayout(State_panel, BoxLayout.X_AXIS));
+		
+		JPanel ProgressBar_panel = new JPanel();
+		ProgressBar_panel.setBackground(new Color(255, 98, 98));
+		State_panel.add(ProgressBar_panel);
+		ProgressBar_panel.setLayout(new BoxLayout(ProgressBar_panel, BoxLayout.X_AXIS));
+		
+		progressBar = new JProgressBar();
 		progressBar.setStringPainted(true);
-		panel_9.add(progressBar);
+		ProgressBar_panel.add(progressBar);
 		
-		JPanel panel_10 = new JPanel();
-		panel_10.setBackground(new Color(255, 98, 98));
-		panel_8.add(panel_10);
-		panel_10.setLayout(new BoxLayout(panel_10, BoxLayout.X_AXIS));
+		JPanel StatesOfUser_panel = new JPanel();
+		StatesOfUser_panel.setBackground(new Color(255, 98, 98));
+		State_panel.add(StatesOfUser_panel);
+		StatesOfUser_panel.setLayout(new BoxLayout(StatesOfUser_panel, BoxLayout.X_AXIS));
 		
-		JPanel panel_18 = new JPanel();
-		panel_18.setBackground(new Color(255, 98, 98));
-		panel_10.add(panel_18);
-		panel_18.setLayout(new BorderLayout(5, 5));
+		JPanel TicketsSate_pannel = new JPanel();
+		TicketsSate_pannel.setBackground(new Color(255, 98, 98));
+		StatesOfUser_panel.add(TicketsSate_pannel);
+		TicketsSate_pannel.setLayout(new BorderLayout(5, 5));
 		
-		JLabel lblNewLabel_4 = new JLabel("Ticket(s):");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_4.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_18.add(lblNewLabel_4, BorderLayout.WEST);
+		JLabel TicketsTitle_label = new JLabel("Ticket(s):");
+		TicketsTitle_label.setHorizontalAlignment(SwingConstants.RIGHT);
+		TicketsTitle_label.setFont(new Font("굴림", Font.BOLD, 12));
+		TicketsSate_pannel.add(TicketsTitle_label, BorderLayout.WEST);
 		
-		JLabel lblNewLabel_5 = new JLabel("0");
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_18.add(lblNewLabel_5);
+		TicketsNumber_label = new JLabel("0");
+		TicketsNumber_label.setHorizontalAlignment(SwingConstants.CENTER);
+		TicketsSate_pannel.add(TicketsNumber_label);
 		
-		JPanel panel_19 = new JPanel();
-		panel_19.setBackground(new Color(255, 98, 98));
-		panel_10.add(panel_19);
-		panel_19.setLayout(new BorderLayout(5, 5));
+		JPanel CouponState_pannel = new JPanel();
+		CouponState_pannel.setBackground(new Color(255, 98, 98));
+		StatesOfUser_panel.add(CouponState_pannel);
+		CouponState_pannel.setLayout(new BorderLayout(5, 5));
 		
-		JLabel lblNewLabel_22 = new JLabel("Coupon:");
-		lblNewLabel_22.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_22.setFont(new Font("굴림", Font.BOLD, 12));
-		panel_19.add(lblNewLabel_22, BorderLayout.WEST);
+		JLabel CouponTitle_label = new JLabel("Coupon:");
+		CouponTitle_label.setHorizontalAlignment(SwingConstants.RIGHT);
+		CouponTitle_label.setFont(new Font("굴림", Font.BOLD, 12));
+		CouponState_pannel.add(CouponTitle_label, BorderLayout.WEST);
 		
-		JLabel lblNewLabel_23 = new JLabel("0");
-		lblNewLabel_23.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_19.add(lblNewLabel_23);
+		CouponLeft_label = new JLabel("0");
+		CouponLeft_label.setHorizontalAlignment(SwingConstants.CENTER);
+		CouponState_pannel.add(CouponLeft_label);
 		
-		JPanel panel_20 = new JPanel();
-		panel_20.setBackground(new Color(255, 98, 98));
-		panel_10.add(panel_20);
-		panel_20.setLayout(new BorderLayout(5, 5));
+		JPanel PointsState_panel = new JPanel();
+		PointsState_panel.setBackground(new Color(255, 98, 98));
+		StatesOfUser_panel.add(PointsState_panel);
+		PointsState_panel.setLayout(new BorderLayout(5, 5));
 		
-		JLabel lblNewLabel_24 = new JLabel("Points:");
-		lblNewLabel_24.setFont(new Font("굴림", Font.BOLD, 12));
-		lblNewLabel_24.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel_20.add(lblNewLabel_24, BorderLayout.WEST);
+		JLabel PointsTitle_label = new JLabel("Points:");
+		PointsTitle_label.setFont(new Font("굴림", Font.BOLD, 12));
+		PointsTitle_label.setHorizontalAlignment(SwingConstants.RIGHT);
+		PointsState_panel.add(PointsTitle_label, BorderLayout.WEST);
 		
-		JLabel lblNewLabel_25 = new JLabel("0");
-		lblNewLabel_25.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_20.add(lblNewLabel_25);
+		PointsLeft_label = new JLabel("0");
+		PointsLeft_label.setHorizontalAlignment(SwingConstants.CENTER);
+		PointsState_panel.add(PointsLeft_label);
 	}
+	
+	public void setActionListener(ActionListener listener) {
+		LogIn_button.addActionListener(listener);
+		BookTicketsButton_button.addActionListener(listener);
+		TheaterInformationButton_button.addActionListener(listener);
+		RateMoviesButton_button.addActionListener(listener);
+		PersonalizedScorePredictionButton_button.addActionListener(listener);
+	}//add action listener to each button
+	
+	/* Below are getter methods */
+	public JButton getLogInButton() {
+		return this.LogIn_button;
+	}
+	
+	public JButton getBookTicketsButton() {
+		return this.BookTicketsButton_button;
+	}
+	
+	public JButton getTheaterInformationButton() {
+		return this.TheaterInformationButton_button;
+	}
+	
+	public JButton getRateMoviesButton() {
+		return this.RateMoviesButton_button;
+	}
+	
+	public JButton getPersonalizedScorePredictionButton() {
+		return this.PersonalizedScorePredictionButton_button;
+	}
+	/* Finish implementing getter methods */
+	
+	/* Below are setter-methods */
+	public void setHelloNameLabel(String input) {
+		this.HelloName_label.setText(input);
+	}
+	public void setMovie1Score(String input) {
+		this.Movie1Score_label.setText(input);
+	}
+	public void setMovie2Score(String input) {
+		this.Movie2Score_label.setText(input);
+	}
+	public void setMovie3Score(String input) {
+		this.Movie3Score_label.setText(input);
+	}
+	public void setMovie4Score(String input) {
+		this.Movie4Score_label.setText(input);
+	}
+	public void setMovie5Score(String input) {
+		this.Movie5Score_label.setText(input);
+	}
+	/* Finish implementing setter-methods */
 }
