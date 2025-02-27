@@ -1,4 +1,4 @@
-Java로 영화 플랫폼 제작. (2023) </br>
+Java로 영화 플랫폼 제작 (2023) </br>
 - slope-one 알고리즘으로 영화 평점 예측 기능 구현 </br>
 - MVC pattern 적용 </br>
 
